@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PessimisticApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c007bd758c47f91a2ef8706972d34cedf22ca96")]
 [assembly: System.Reflection.AssemblyProductAttribute("PessimisticApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PessimisticApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
