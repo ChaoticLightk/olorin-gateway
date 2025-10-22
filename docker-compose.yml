@@ -1,0 +1,40 @@
+services:
+  gateway:
+    container_name: gateway
+    hostname: gateway
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '500M'
+
+  blazor:
+    container_name: blazor 
+    hostname: blazor
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '500M'
+
+  optimistic-api:
+    container_name: optimistic-api
+    hostname: optimistic-api
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '200M'
+
+  pessimistic-api:
+    container_name: pessimistic-api
+    hostname: pessimistic-api
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '200M'

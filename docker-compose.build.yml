@@ -1,0 +1,20 @@
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: src/Gateway/Dockerfile
+
+  blazor:
+    build:
+      context: .
+      dockerfile: src/BlazorApplication/Dockerfile
+
+  optimistic-api:
+    build:
+      context: .
+      dockerfile: src/OptimisticApi/Dockerfile
+
+  pessimistic-api:
+    build:
+      context: .
+      dockerfile: src/PessimisticApi/Dockerfile

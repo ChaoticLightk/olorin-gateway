@@ -1,0 +1,55 @@
+services:
+  gateway:
+    image: gateway:dev 
+    container_name: gateway-dev
+    hostname: gateway-dev
+    ports:
+      - "7111:7111"
+    environment:
+      ASPNETCORE_HTTP_PORTS: "7111"
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+  blazor:
+    image: blazor:dev 
+    container_name: blazor-dev
+    hostname: blazor-dev
+    ports:
+      - "7300:7300"
+    environment:
+      ASPNETCORE_HTTP_PORTS: "7300"
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+  optimistic-api:
+    image: optimistic-api:dev 
+    container_name: optimistic-api-dev
+    hostname: optimistic-api-dev
+    ports:
+      - "7100:7100"
+    environment:
+      ASPNETCORE_HTTP_PORTS: "7100"
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+  pessimistic-api:
+    image: pessimistic-api:dev 
+    container_name: pessimistic-api-dev
+    hostname: pessimistic-api-dev
+    ports:
+      - "7200:7200"
+    environment:
+      ASPNETCORE_HTTP_PORTS: "7200"
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: gateway
+      MONGODB_INITDB_ROOT_PASSWORD: g4t3w4y
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
