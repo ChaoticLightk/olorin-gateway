@@ -1,6 +1,5 @@
 using Gateway.Domain.Repositories.Config.Interfaces;
 using Gateway.Providers.Config;
-using Microsoft.Extensions.Primitives;
 using Yarp.ReverseProxy.Configuration;
 
 namespace Gateway.Providers;

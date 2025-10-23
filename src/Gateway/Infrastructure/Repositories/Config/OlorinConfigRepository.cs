@@ -1,4 +1,6 @@
-using Gateway.Domain.Entities.MongoDb;
+using System.Collections.ObjectModel;
+using Gateway.Domain.Entities.MongoDb.Cluster;
+using Gateway.Domain.Entities.MongoDb.Route;
 using Gateway.Domain.Options;
 using Gateway.Domain.Repositories.Config.Interfaces;
 using Microsoft.Extensions.Options;
@@ -32,7 +34,12 @@ public class OlorinConfigRepository(
         return [.. docs.Select(c => new ClusterConfig
         {
             ClusterId = c.ClusterId,
-            Destinations = c.Destinations
+            Destinations = c.Destinations.ToDictionary(
+                x => x.Key,
+                x => new DestinationConfig {
+                    Address = x.Value.Address,
+                }
+            ),
         })];
         // return [
         //     new() {
@@ -53,7 +60,7 @@ public class OlorinConfigRepository(
         {
             RouteId = r.RouteId,
             ClusterId = r.ClusterId,
-            Match = r.Match,
+            Match = new RouteMatch { Path = r.Match.Path },
             Transforms = r.Transforms
         })];
         // return [
