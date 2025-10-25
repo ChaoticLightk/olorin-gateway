@@ -2,6 +2,8 @@ using BlazorApplication.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -19,6 +21,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAntiforgery();
+
+app.MapDefaultEndpoints();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
