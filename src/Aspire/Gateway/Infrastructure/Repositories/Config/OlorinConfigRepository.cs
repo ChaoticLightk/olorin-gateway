@@ -35,22 +35,13 @@ public class OlorinConfigRepository(
         {
             ClusterId = c.ClusterId,
             Destinations = c.Destinations.ToDictionary(
-                x => x.Key,
+                x => x.Name,
                 x => new DestinationConfig {
-                    Address = x.Value.Address,
+                    Address = x.Address,
+                    Health = x.Health
                 }
             ),
         })];
-        // return [
-        //     new() {
-        //         ClusterId = "apiCluster",
-        //         Destinations = new Dictionary<string, DestinationConfig>
-        //         {
-        //             { "pessimistic", new DestinationConfig { Address = "https://localhost:7200/" } },
-        //             { "optmistic", new DestinationConfig { Address = "https://localhost:7100/" } }
-        //         }
-        //     }
-        // ];
     }
 
     public List<RouteConfig> GetRoutes()
@@ -63,14 +54,5 @@ public class OlorinConfigRepository(
             Match = new RouteMatch { Path = r.Match.Path },
             Transforms = r.Transforms
         })];
-        // return [
-        //     new(){
-        //         RouteId = "weatherRoute",
-        //         ClusterId = "apiCluster",
-        //         Match = new()  {
-        //             Path = "/weatherforecast"
-        //         }
-        //     }
-        // ];
     }
 }

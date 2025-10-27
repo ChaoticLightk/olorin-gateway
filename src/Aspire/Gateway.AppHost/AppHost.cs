@@ -21,7 +21,9 @@ builder.AddProject<BlazorApplication>(ProjectNames.WEBBLAZOR)
     .WaitFor(pessimisticApi);
 
 var mongo = builder
-    .AddMongoDB(MongoDbConfiguration.DEPENDENCY_NAME, 27017)
+    .AddMongoDB(
+        MongoDbConfiguration.DEPENDENCY_NAME,
+        MongoDbConfiguration.DB_PORT)
     .WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent)
     .AddDatabase(MongoDbConfiguration.DB_NAME);
