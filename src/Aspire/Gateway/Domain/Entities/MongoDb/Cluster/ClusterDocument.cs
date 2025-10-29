@@ -1,3 +1,4 @@
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Gateway.Domain.Entities.MongoDb.Cluster;
@@ -5,7 +6,8 @@ namespace Gateway.Domain.Entities.MongoDb.Cluster;
 public class ClusterDocument
 {
     [BsonId]
-    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
+    [BsonElement("_id")]
+    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = default!;
 
     [BsonElement("clusterId")]
@@ -13,4 +15,7 @@ public class ClusterDocument
 
     [BsonElement("destinations")]
     public List<DestinationDocument> Destinations { get; set; } = [];
+
+    [BsonElement("__v")]
+    public int Test { get; set; }
 }

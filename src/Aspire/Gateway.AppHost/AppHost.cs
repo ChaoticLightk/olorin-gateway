@@ -6,19 +6,19 @@ const string DEFAULT_HEALTH_CHECK_ENDPOINT = "/health";
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var optimisticApi = builder
-    .AddProject<OptimisticApi>(ProjectNames.OPTIMISTICAPI)
-    .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT); 
+// var optimisticApi = builder
+//     .AddProject<OptimisticApi>(ProjectNames.OPTIMISTICAPI)
+//     .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT); 
 
-var pessimisticApi = builder
-    .AddProject<PessimisticApi>(ProjectNames.PESSIMISTICAPI)
-    .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT); 
+// var pessimisticApi = builder
+//     .AddProject<PessimisticApi>(ProjectNames.PESSIMISTICAPI)
+//     .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT); 
 
-builder.AddProject<BlazorApplication>(ProjectNames.WEBBLAZOR)
-    .WithExternalHttpEndpoints()
-    .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT)
-    .WithReference(optimisticApi)
-    .WaitFor(pessimisticApi);
+// builder.AddProject<BlazorApplication>(ProjectNames.WEBBLAZOR)
+//     .WithExternalHttpEndpoints()
+//     .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT)
+//     .WithReference(optimisticApi)
+//     .WaitFor(pessimisticApi);
 
 var mongo = builder
     .AddMongoDB(

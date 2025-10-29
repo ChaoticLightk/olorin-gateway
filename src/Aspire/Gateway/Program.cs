@@ -1,33 +1,14 @@
-using Gateway.Domain.Options;
 using Gateway.Domain.Repositories.Config.Interfaces;
 using Gateway.Infrastructure.Repositories.Config;
 using Gateway.Providers;
+using Gateway.Providers.Interfaces;
 using Gateway.Shared.Constants.Database;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
+using Microsoft.AspNetCore.Mvc;
 using Yarp.ReverseProxy.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
-
-// builder.Services
-//     .AddOptions<MongoDbOptions>()
-//     .BindConfiguration(MongoDbOptions.SECTION_NAME)
-//     .ValidateDataAnnotations()
-//     .ValidateOnStart();
-
-// builder.Services.Configure<MongoDbOptions>(options =>
-// {
-//     var conn = builder.Configuration.GetConnectionString(MongoDbConfiguration.DB_NAME);
-//     options.ConnectionString = conn!;
-// });
-
-// builder.Services.AddSingleton<IMongoClient>(c =>
-// {
-//     var options = c.GetRequiredService<IOptions<MongoDbOptions>>().Value;
-//     return new MongoClient(options.ConnectionString);
-// });
 
 builder.AddMongoDBClient(MongoDbConfiguration.DB_NAME);
 
@@ -43,5 +24,16 @@ app.MapDefaultEndpoints();
 app.UseHttpsRedirection();
 
 app.MapReverseProxy();
+
+app.MapPost("/refresh", ([FromServices]IProxyConfigProvider provider) =>
+{
+    if (provider is IReloadableProxyConfigProvider reloadableProvider)
+    {
+        reloadableProvider.Reload();
+        return Results.Ok(new { message = "Reverse proxy configuration refreshed." });
+    }
+
+    return Results.BadRequest(new { message = "Provider does not support reload." });
+});
 
 app.Run();
