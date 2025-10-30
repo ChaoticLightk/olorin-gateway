@@ -1,4 +1,3 @@
-using Gateway.Domain.Entities.MongoDb.Cluster;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -17,13 +16,23 @@ public class RouteDocument
     [BsonElement("cluster")]
     [BsonRepresentation(BsonType.ObjectId)]
     public string ClusterId { get; set; } = default!;
-    
+
     [BsonElement("match")]
     public MatchDocument Match { get; set; } = new();
 
     [BsonElement("transforms")]
-    public List<Dictionary<string, string>>? Transforms { get; set; }
+    public List<TransformDocument>? Transforms { get; set; } = [];
 
-    [BsonElement("__v")]
-    public int Test { get; set; }
+    public IReadOnlyList<IReadOnlyDictionary<string, string>> TransformsDicitonary()
+    {
+        if (Transforms is null)
+        {
+            return [];
+        }
+
+        return Transforms
+            .Select(p => new Dictionary<string, string>
+                {{ p.Type, p.Value } })
+            .ToList();
+    }
 }

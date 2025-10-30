@@ -1,4 +1,3 @@
-using System;
 using Yarp.ReverseProxy.Configuration;
 
 namespace Gateway.Domain.Repositories.Config.Interfaces;

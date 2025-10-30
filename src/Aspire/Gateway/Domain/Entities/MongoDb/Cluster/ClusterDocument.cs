@@ -15,7 +15,4 @@ public class ClusterDocument
 
     [BsonElement("destinations")]
     public List<DestinationDocument> Destinations { get; set; } = [];
-
-    [BsonElement("__v")]
-    public int Test { get; set; }
 }
