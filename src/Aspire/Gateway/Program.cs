@@ -1,5 +1,6 @@
 using Gateway.Domain.Repositories.Config.Interfaces;
 using Gateway.Infrastructure.Repositories.Config;
+using Gateway.Modules;
 using Gateway.Providers;
 using Gateway.Providers.Interfaces;
 using Gateway.Shared.Constants.Database;
@@ -9,6 +10,8 @@ using Yarp.ReverseProxy.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
+builder.AddCorsModules();
 
 builder.AddMongoDBClient(MongoDbConfiguration.DB_NAME);
 
@@ -24,6 +27,8 @@ app.MapDefaultEndpoints();
 app.UseHttpsRedirection();
 
 app.MapReverseProxy();
+
+app.ConfigureCorsPolicy();
 
 app.MapPost("/refresh", ([FromServices]IProxyConfigProvider provider) =>
 {
