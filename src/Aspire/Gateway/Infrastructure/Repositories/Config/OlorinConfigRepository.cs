@@ -42,23 +42,22 @@ public class OlorinConfigRepository(IMongoClient mongo)
 
     public List<RouteConfig> GetRoutes()
     {
-        var docs = _routesCollection
+        var routes = _routesCollection
             .Find(FilterDefinition<RouteDocument>.Empty)
             .ToList();
 
-        var q = from route in _routesCollection.AsQueryable()
-            join cluster in _clustersCollection.AsQueryable()
+        var clusters = _clustersCollection
+            .Find(FilterDefinition<ClusterDocument>.Empty)
+            .ToList();
+
+        var q = from route in routes.AsQueryable()
+            join cluster in clusters.AsQueryable()
             on route.ClusterId equals cluster.Id
             select new RouteConfig
             {
                 RouteId = route.RouteId,
                 ClusterId = cluster.ClusterId,
-                Transforms = route.Transforms != null && route.Transforms.Count > 0
-                    ? route.Transforms
-                        .Select(p => new Dictionary<string, string>
-                            {{ p.Type, p.Value } })
-                        .ToList()
-                    : new(), 
+                Transforms = route.TransformsDicitonary(), 
                 Match = new() { Path = route.Match.Path }
             };
 
