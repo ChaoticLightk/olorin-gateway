@@ -23,6 +23,9 @@ public class RouteDocument
     [BsonElement("transforms")]
     public List<TransformDocument>? Transforms { get; set; } = [];
 
+    [BsonElement("authorizationPolicy")]
+    public string AuthorizationPolicy { get; set; } = default!; 
+
     public IReadOnlyList<IReadOnlyDictionary<string, string>> TransformsDicitonary()
     {
         if (Transforms is null)
