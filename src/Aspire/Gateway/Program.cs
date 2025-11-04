@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
 builder.AddCorsModules();
+builder.AddAuthenticationModule();
 
 builder.AddMongoDBClient(MongoDbConfiguration.DB_NAME);
 
@@ -26,9 +27,10 @@ app.MapDefaultEndpoints();
 
 app.UseHttpsRedirection();
 
-app.MapReverseProxy();
-
+app.ConfigureAuthentication();
 app.ConfigureCorsPolicy();
+
+app.MapReverseProxy();
 
 app.MapPost("/refresh", ([FromServices]IProxyConfigProvider provider) =>
 {

@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
@@ -35,7 +34,6 @@ public class BasicAuthenticationHandler(
             var username = credentials[0];
             var password = credentials[1];
 
-            // validação real Mongo
             if (username != "admin" || password != "1234")
             {
                 return AuthenticateResult.Fail("Invalid credentials");

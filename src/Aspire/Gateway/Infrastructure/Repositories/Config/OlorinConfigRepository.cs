@@ -57,8 +57,9 @@ public class OlorinConfigRepository(IMongoClient mongo)
             {
                 RouteId = route.RouteId,
                 ClusterId = cluster.ClusterId,
-                Transforms = route.TransformsDicitonary(), 
-                Match = new() { Path = route.Match.Path }
+                Transforms = route.TransformsDicitonary(),
+                Match = new() { Path = route.Match.Path },
+                AuthorizationPolicy = route.Authorization
             };
 
         return [.. q];
