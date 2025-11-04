@@ -1,9 +1,7 @@
 using Gateway.Domain.Entities.MongoDb.Cluster;
 using Gateway.Domain.Entities.MongoDb.Route;
-using Gateway.Domain.Options;
 using Gateway.Domain.Repositories.Config.Interfaces;
 using Gateway.Shared.Constants.Database;
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Yarp.ReverseProxy.Configuration;
 
@@ -44,18 +42,24 @@ public class OlorinConfigRepository(IMongoClient mongo)
 
     public List<RouteConfig> GetRoutes()
     {
-        var docs = _routesCollection
+        var routes = _routesCollection
             .Find(FilterDefinition<RouteDocument>.Empty)
             .ToList();
 
-        var q = from route in _routesCollection.AsQueryable()
-            join cluster in _clustersCollection.AsQueryable()
+        var clusters = _clustersCollection
+            .Find(FilterDefinition<ClusterDocument>.Empty)
+            .ToList();
+
+        var q = from route in routes.AsQueryable()
+            join cluster in clusters.AsQueryable()
             on route.ClusterId equals cluster.Id
             select new RouteConfig
             {
                 RouteId = route.RouteId,
                 ClusterId = cluster.ClusterId,
+                Transforms = route.TransformsDicitonary(),
                 Match = new() { Path = route.Match.Path },
+                AuthorizationPolicy = route.Authorization
             };
 
         return [.. q];

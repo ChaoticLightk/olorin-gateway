@@ -16,9 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BlazorApplication\BlazorApplication.csproj" />
-    <ProjectReference Include="..\..\OptimisticApi\OptimisticApi.csproj" />
-    <ProjectReference Include="..\..\PessimisticApi\PessimisticApi.csproj" />
     <ProjectReference Include="..\Gateway.Shared\Gateway.Shared.csproj" IsAspireProjectResource="false" />
     <ProjectReference Include="..\Gateway\Gateway.csproj" />
   </ItemGroup>
