@@ -1,10 +1,9 @@
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Gateway.Domain.Entities.MongoDb.Cluster;
+namespace Domain.Entities.Mongo.Cluster;
 
 public class DestinationDocument
 {
-
     [BsonElement("name")]
     public string Name { get; set; } = default!;
 

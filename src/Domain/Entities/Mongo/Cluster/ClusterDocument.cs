@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Gateway.Domain.Entities.MongoDb.Cluster;
+namespace Domain.Entities.Mongo.Cluster;
 
 public class ClusterDocument
 {

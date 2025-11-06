@@ -1,4 +1,4 @@
-namespace Gateway.Shared.Constants.Database;
+namespace Domain.Shared.Constants;
 
 public static class MongoDbConfiguration
 {

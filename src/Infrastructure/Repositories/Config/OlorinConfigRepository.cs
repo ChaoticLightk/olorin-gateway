@@ -1,11 +1,11 @@
-using Gateway.Domain.Entities.MongoDb.Cluster;
-using Gateway.Domain.Entities.MongoDb.Route;
-using Gateway.Domain.Repositories.Config.Interfaces;
-using Gateway.Shared.Constants.Database;
+using Domain.Entities.Mongo.Cluster;
+using Domain.Entities.Mongo.Route;
+using Domain.Repositories.Interfaces;
+using Domain.Shared.Constants;
 using MongoDB.Driver;
 using Yarp.ReverseProxy.Configuration;
 
-namespace Gateway.Infrastructure.Repositories.Config;
+namespace Infrastructure.Repositories.Config;
 
 public class OlorinConfigRepository(IMongoClient mongo) 
     : IConfigRepository

@@ -1,9 +1,8 @@
-using Gateway.Domain.Repositories.Config.Interfaces;
-using Gateway.Infrastructure.Repositories.Config;
-using Gateway.Modules;
+using Domain.Shared.Constants;
+using Gateway.DependecyInjection;
 using Gateway.Providers;
 using Gateway.Providers.Interfaces;
-using Gateway.Shared.Constants.Database;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Yarp.ReverseProxy.Configuration;
 
@@ -14,9 +13,8 @@ builder.AddServiceDefaults();
 builder.AddCorsModules();
 builder.AddAuthenticationModule();
 
-builder.AddMongoDBClient(MongoDbConfiguration.DB_NAME);
+builder.AddInfrastructure();
 
-builder.Services.AddSingleton<IConfigRepository, OlorinConfigRepository>();
 builder.Services.AddSingleton<IProxyConfigProvider, OlorinConfigProvider>();
 
 builder.Services.AddReverseProxy();

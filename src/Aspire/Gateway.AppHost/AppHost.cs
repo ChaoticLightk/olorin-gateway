@@ -1,5 +1,4 @@
-using Gateway.Shared.Constants;
-using Gateway.Shared.Constants.Database;
+using Domain.Shared.Constants;
 
 const string DEFAULT_HEALTH_CHECK_ENDPOINT = "/health";
 

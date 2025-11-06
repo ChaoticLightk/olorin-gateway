@@ -1,6 +1,6 @@
 using Yarp.ReverseProxy.Configuration;
 
-namespace Gateway.Domain.Repositories.Config.Interfaces;
+namespace Domain.Repositories.Interfaces;
 
 public interface IConfigRepository
 {

@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Gateway.Domain.Entities.MongoDb.Route;
+namespace Domain.Entities.Mongo.Route;
 
 public class AuthorizationDocument
 {

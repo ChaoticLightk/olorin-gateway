@@ -1,4 +1,4 @@
-namespace Gateway.Modules;
+namespace Gateway.DependecyInjection;
 
 public static class CorsModules
 {

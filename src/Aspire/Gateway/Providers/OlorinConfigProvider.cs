@@ -1,4 +1,4 @@
-using Gateway.Domain.Repositories.Config.Interfaces;
+using Domain.Repositories.Interfaces;
 using Gateway.Providers.Config;
 using Gateway.Providers.Interfaces;
 using Yarp.ReverseProxy.Configuration;

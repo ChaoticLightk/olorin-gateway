@@ -1,9 +1,7 @@
-using System;
 using Microsoft.Extensions.Primitives;
 using Yarp.ReverseProxy.Configuration;
 
 namespace Gateway.Providers.Config;
-
 
 public class OlorinProxyConfig(
     List<RouteConfig> routes,
