@@ -55,7 +55,7 @@ public static class AuthenticationModule
         return builder;
     }
 
-    public static void ConfigureAuthentication(this IApplicationBuilder app)
+    public static void ConfigureAuthenticationModule(this IApplicationBuilder app)
     {
         app.UseAuthentication();
         app.UseAuthorization();

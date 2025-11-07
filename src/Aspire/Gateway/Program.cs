@@ -1,8 +1,13 @@
+using Domain.Repositories.Interfaces;
 using Domain.Shared.Constants;
+using Gateway.Application.Authentication.DTO;
+using Gateway.Application.Authentication.Services;
+using Gateway.Application.Authentication.Services.Interfaces;
 using Gateway.DependecyInjection;
 using Gateway.Providers;
 using Gateway.Providers.Interfaces;
 using Infrastructure;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Yarp.ReverseProxy.Configuration;
 
@@ -16,6 +21,8 @@ builder.AddAuthenticationModule();
 builder.AddInfrastructure();
 
 builder.Services.AddSingleton<IProxyConfigProvider, OlorinConfigProvider>();
+builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 builder.Services.AddReverseProxy();
 
@@ -25,12 +32,14 @@ app.MapDefaultEndpoints();
 
 app.UseHttpsRedirection();
 
-app.ConfigureAuthentication();
-app.ConfigureCorsPolicy();
+app.ConfigureAuthenticationModule();
+app.ConfigureCorsModule();
 
 app.MapReverseProxy();
 
-app.MapPost("/refresh", ([FromServices]IProxyConfigProvider provider) =>
+var api = app.MapGroup("/api");
+
+api.MapPost("/refresh", ([FromServices] IProxyConfigProvider provider) =>
 {
     if (provider is IReloadableProxyConfigProvider reloadableProvider)
     {
@@ -39,6 +48,22 @@ app.MapPost("/refresh", ([FromServices]IProxyConfigProvider provider) =>
     }
 
     return Results.BadRequest(new { message = "Provider does not support reload." });
+});
+
+api.MapPost("/authorize", static async (
+    [FromServices] IAuthenticationService service,
+    [FromBody] AuthorizeRequest request) =>
+{
+    var result = await service.AuthorizeApplication(
+        request.Application,
+        request.Password);
+
+    if (result)
+    {
+        return Results.Ok();
+    }
+
+    return Results.Unauthorized();
 });
 
 app.Run();

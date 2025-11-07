@@ -28,7 +28,7 @@ public static class CorsModules
         return builder;
     }
 
-    public static void ConfigureCorsPolicy(this IApplicationBuilder app)
+    public static void ConfigureCorsModule(this IApplicationBuilder app)
     {
         app.UseCors(POLICY_NAME);
     }
