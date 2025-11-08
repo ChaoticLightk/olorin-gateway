@@ -3,6 +3,7 @@ using Domain.Shared.Constants;
 using Gateway.Application.Authentication.DTO;
 using Gateway.Application.Authentication.Services;
 using Gateway.Application.Authentication.Services.Interfaces;
+using Gateway.Configuration.Jwt;
 using Gateway.DependecyInjection;
 using Gateway.Providers;
 using Gateway.Providers.Interfaces;
@@ -14,6 +15,8 @@ using Yarp.ReverseProxy.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
+builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection(JWTSettings.SECTION_NAME));
 
 builder.AddCorsModules();
 builder.AddAuthenticationModule();
@@ -58,9 +61,12 @@ api.MapPost("/authorize", static async (
         request.Application,
         request.Password);
 
-    if (result)
+    if (result is not null)
     {
-        return Results.Ok();
+        return Results.Ok(new
+        {
+            token = result
+        });
     }
 
     return Results.Unauthorized();
