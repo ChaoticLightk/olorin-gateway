@@ -45,10 +45,12 @@ public static class AuthenticationModule
             .AddAuthorizationBuilder()
             .AddPolicy(JwtBearerDefaults.AuthenticationScheme, policy =>
             {
+                policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
                 policy.RequireAuthenticatedUser();
             })
             .AddPolicy(BASIC_AUTH_SCHEME, policy =>
             {
+                policy.AddAuthenticationSchemes(BASIC_AUTH_SCHEME);
                 policy.RequireAuthenticatedUser();
             });
 

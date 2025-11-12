@@ -15,7 +15,13 @@ public class ApplicationDocument
 
     [BsonElement("password")]
     public string Password { get; set; } = default!;
-    
+
     [BsonElement("salt")]
     public string Salt { get; set; } = default!;
+
+    [BsonElement("createdAt")]
+    public DateTime CreatedAt { get; set; }
+
+    [BsonElement("updatedAt")]
+    public DateTime UpdatedAt { get; set; }
 }

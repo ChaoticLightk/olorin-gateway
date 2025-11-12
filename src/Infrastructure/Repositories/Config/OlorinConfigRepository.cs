@@ -7,17 +7,17 @@ using Yarp.ReverseProxy.Configuration;
 
 namespace Infrastructure.Repositories.Config;
 
-public class OlorinConfigRepository(IMongoClient mongo) 
+public class OlorinConfigRepository(IMongoClient mongo)
     : IConfigRepository
 {
     private const string ROUTES_COLLECTION_NAME = "routes";
     private const string CLUSTERS_COLLECITON_NAME = "clusters";
 
-    private readonly IMongoCollection<RouteDocument> _routesCollection = mongo 
+    private readonly IMongoCollection<RouteDocument> _routesCollection = mongo
         .GetDatabase(MongoDbConfiguration.DB_NAME)
         .GetCollection<RouteDocument>(ROUTES_COLLECTION_NAME);
 
-    private readonly IMongoCollection<ClusterDocument> _clustersCollection = mongo 
+    private readonly IMongoCollection<ClusterDocument> _clustersCollection = mongo
         .GetDatabase(MongoDbConfiguration.DB_NAME)
         .GetCollection<ClusterDocument>(CLUSTERS_COLLECITON_NAME);
 
@@ -51,16 +51,16 @@ public class OlorinConfigRepository(IMongoClient mongo)
             .ToList();
 
         var q = from route in routes.AsQueryable()
-            join cluster in clusters.AsQueryable()
-            on route.ClusterId equals cluster.Id
-            select new RouteConfig
-            {
-                RouteId = route.RouteId,
-                ClusterId = cluster.ClusterId,
-                Transforms = route.TransformsDicitonary(),
-                Match = new() { Path = route.Match.Path },
-                AuthorizationPolicy = route.Authorization
-            };
+                join cluster in clusters.AsQueryable()
+                on route.ClusterId equals cluster.Id
+                select new RouteConfig
+                {
+                    RouteId = route.RouteId,
+                    ClusterId = cluster.ClusterId,
+                    Transforms = route.TransformsDicitonary(),
+                    Match = new() { Path = route.Match.Path },
+                    AuthorizationPolicy = route.Authorization,
+                };
 
         return [.. q];
     }

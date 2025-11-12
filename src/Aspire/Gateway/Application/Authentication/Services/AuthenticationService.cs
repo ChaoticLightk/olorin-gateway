@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Domain.Entities.Mongo.Application;
 using Domain.Repositories.Interfaces;
 using Gateway.Application.Authentication.Services.Interfaces;
 using Gateway.Configuration.Jwt;
@@ -18,21 +19,39 @@ public class AuthenticationService(
 
     public async Task<string?> AuthorizeApplication(string application, string password)
     {
+        var app = await CheckCredentials(application, password); 
+
+        if(app is null)
+        {
+            return null;
+        }
+
+        return GenerateJwtToken(app.Name);
+    }
+
+    public async Task<bool> BasicAuthorize(string application, string password)
+    {
+        var app = await CheckCredentials(application, password);
+        return app is not null;
+    }
+
+    private async Task<ApplicationDocument?> CheckCredentials(string application, string password)
+    {
         var app = await repository.GetApplicationDocumentAsync(application);
 
         if (app is null)
         {
-            return null;
+            return default;
         }
 
         var computed = ComputeSha256Hash(password, app.Salt);
 
         if (!computed.Equals(app.Password))
         {
-            return null;
+            return default;
         }
 
-        return GenerateJwtToken(app.Name);
+        return app;
     }
 
     private static string ComputeSha256Hash(string password, string salt)

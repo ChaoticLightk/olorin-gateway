@@ -9,6 +9,7 @@ namespace Gateway.Application.Authentication.Handlers;
 
 public class BasicAuthenticationHandler(
     IOptionsMonitor<AuthenticationSchemeOptions> options,
+    Services.Interfaces.IAuthenticationService service,
     ILoggerFactory logger,
     UrlEncoder encoder
 ) : AuthenticationHandler<AuthenticationSchemeOptions>(options, logger, encoder)
@@ -31,10 +32,13 @@ public class BasicAuthenticationHandler(
             }
 
             var credentials = Encoding.UTF8.GetString(Convert.FromBase64String(authHeader.Parameter!)).Split(':', 2);
+
             var username = credentials[0];
             var password = credentials[1];
 
-            if (username != "admin" || password != "1234")
+            bool authorize = await service.BasicAuthorize(username, password);
+
+            if (!authorize)
             {
                 return AuthenticateResult.Fail("Invalid credentials");
             }
