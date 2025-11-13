@@ -1,0 +1,79 @@
+using Domain.Entities.Mongo.Cluster;
+using Domain.Entities.Mongo.Endpoint;
+using Domain.Entities.Mongo.Route;
+using Domain.Repositories.Interfaces;
+using Domain.Shared.Constants;
+using MongoDB.Driver;
+using Yarp.ReverseProxy.Configuration;
+
+namespace Infrastructure.Repositories.Config;
+
+public class OlorinEndpointsConfigRepository(IMongoClient mongo)
+    : IConfigRepository
+{
+    private const string ENDPOINTS_COLLECITON_NAME = "endpoints";
+
+    private readonly IMongoCollection<EndpointDocument> _endpointsCollection = mongo
+        .GetDatabase(MongoDbConfiguration.DB_NAME)
+        .GetCollection<EndpointDocument>(ENDPOINTS_COLLECITON_NAME);
+
+    public List<ClusterConfig> GetClusters()
+    {
+        var docs = _endpointsCollection
+            .Find(FilterDefinition<EndpointDocument>.Empty)
+            .ToList();
+
+        return [.. docs.Select(c => new ClusterConfig
+        {
+            ClusterId = c.Cluster.ClusterId,
+            LoadBalancingPolicy = c.Cluster.LoadBalancingPolicy,
+            Destinations = c.Cluster.Destinations.ToDictionary(
+                x => x.Name,
+                x => new DestinationConfig {
+                    Address = x.Address,
+                    Health = x.Health,
+                    Metadata = new Dictionary<string, string>()
+                    {
+                        { "Enabled", x.Enabled.ToString() },
+                        { "Weight", x.Weight.ToString() },
+                    }
+                }
+            ),
+        })];
+    }
+
+    public List<RouteConfig> GetRoutes()
+    {
+        var docs = _endpointsCollection
+            .Find(FilterDefinition<EndpointDocument>.Empty)
+            .ToList();
+
+        var routes = new List<RouteConfig>();
+
+        foreach (var endpoint in docs)
+        {
+            var clusterId = endpoint.Cluster.ClusterId;
+
+            foreach (var route in endpoint.Routes)
+            {
+                routes.Add(new RouteConfig
+                {
+                    RouteId = route.RouteId,
+                    ClusterId = clusterId,
+                    Match = new RouteMatch
+                    {
+                        Path = route.Match.Path
+                    },
+                    Transforms = route.Transforms?
+                    .Select(t => new Dictionary<string, string>
+                    {
+                        { t.Type, t.Value },
+                    }).ToList(),
+                    AuthorizationPolicy = route.Authorization
+                });
+            }
+        }
+
+        return routes;
+    }
+}

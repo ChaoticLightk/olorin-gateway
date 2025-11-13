@@ -1,16 +1,17 @@
 using Domain.Repositories.Interfaces;
-using Domain.Shared.Constants;
 using Gateway.Application.Authentication.DTO;
 using Gateway.Application.Authentication.Services;
 using Gateway.Application.Authentication.Services.Interfaces;
 using Gateway.Configuration.Jwt;
 using Gateway.DependecyInjection;
+using Gateway.Extensions.YARP.LoadBalancing;
 using Gateway.Providers;
 using Gateway.Providers.Interfaces;
 using Infrastructure;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Yarp.ReverseProxy.Configuration;
+using Yarp.ReverseProxy.LoadBalancing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,9 @@ builder.AddInfrastructure();
 builder.Services.AddSingleton<IProxyConfigProvider, OlorinConfigProvider>();
 builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+builder.Services.AddSingleton<ILoadBalancingPolicy, WeightedLoadBalancingPolicy>();
+builder.Services.AddSingleton<ILoadBalancingPolicy, EnabledAwareLoadBalancingPolicy>();
 
 builder.Services.AddReverseProxy();
 

@@ -13,7 +13,7 @@ public static class DependencyInjection
     {
         builder.AddMongoDBClient(MongoDbConfiguration.DB_NAME);
 
-        builder.Services.AddSingleton<IConfigRepository, OlorinConfigRepository>();
+        builder.Services.AddSingleton<IConfigRepository, OlorinEndpointsConfigRepository>();
 
         return builder;
     }
