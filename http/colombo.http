@@ -19,9 +19,9 @@ Content-Type: application/json
 }
 
 ###
+
 POST https://localhost:7111/DAX/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2MCIsImp0aSI6ImQ5MDYxMmIzLTAxZjMtNGU5Ny1hYWYyLWIwMjZlNmRlNjhkOSIsImV4cCI6MTc2Mjk3MzI5OSwiaXNzIjoib2xvcmluLWdhdGV3YXkifQ.yOFJF2zHi5Kp7hOrSpbvzfA6ZVYpRpSMaIaUxG8Isrk
 
 {
    "class": "AssistantTransactionService_COL", 

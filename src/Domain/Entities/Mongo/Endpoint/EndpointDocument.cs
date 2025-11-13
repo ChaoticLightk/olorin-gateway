@@ -4,26 +4,12 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Entities.Mongo.Endpoint
 {
-    // public class TransformDocument
-    // {
-    //     [BsonElement("type")]
-    //     public string Type { get; set; } = default!;
-
-    //     [BsonElement("value")]
-    //     [BsonIgnoreIfNull]
-    //     public string? Value { get; set; }
-    // }
-
-    // public class MatchDocument
-    // {
-    //     [BsonElement("path")]
-    //     public string Path { get; set; } = default!;
-    // }
-
     public class RouteDocument
     {
-        [BsonElement("routeId")]
-        public string RouteId { get; set; } = default!;
+        [BsonId]
+        [BsonElement("_id")]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; } = default!;
 
         [BsonElement("authorization")]
         public string Authorization { get; set; } = "Anonymous";

@@ -1,6 +1,4 @@
-using Domain.Entities.Mongo.Cluster;
 using Domain.Entities.Mongo.Endpoint;
-using Domain.Entities.Mongo.Route;
 using Domain.Repositories.Interfaces;
 using Domain.Shared.Constants;
 using MongoDB.Driver;
@@ -58,7 +56,7 @@ public class OlorinEndpointsConfigRepository(IMongoClient mongo)
             {
                 routes.Add(new RouteConfig
                 {
-                    RouteId = route.RouteId,
+                    RouteId = route.Id,
                     ClusterId = clusterId,
                     Match = new RouteMatch
                     {
