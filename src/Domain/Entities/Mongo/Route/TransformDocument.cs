@@ -9,4 +9,7 @@ public class TransformDocument
 
     [BsonElement("value")]
     public string Value { get; set; } = default!;
+
+    [BsonElement("when")]
+    public string When { get; set; } = default!;
 }
