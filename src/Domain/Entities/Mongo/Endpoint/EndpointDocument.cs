@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Domain.Entities.Mongo.Route;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -17,9 +18,40 @@ namespace Domain.Entities.Mongo.Endpoint
         [BsonElement("match")]
         public MatchDocument Match { get; set; } = default!;
 
-        [BsonElement("transforms")]
+        [BsonElement("bodyTransformType")]
+        public BodyTransformType BodyTransformType { get; set; }
+
         [BsonIgnoreIfNull]
+        [BsonElement("transforms")]
         public List<TransformDocument>? Transforms { get; set; } = [];
+
+        public IReadOnlyDictionary<string, string> BuildMetadata()
+        {
+            var metadata = new Dictionary<string, string>();
+
+            if (BodyTransform)
+            {
+                metadata[nameof(BodyTransform)] = true.ToString();
+                metadata[nameof(BodyTransformType)] = BodyTransformType.ToString();
+            }
+
+            return metadata;
+        }
+
+        public IReadOnlyList<IReadOnlyDictionary<string, string>> BuildTransforms()
+        {
+            if (Transforms is null)
+            {
+                return [];
+            }
+
+            return Transforms
+                .Select(p => new Dictionary<string, string>
+                    {{ p.Type, p.Value } })
+                .ToList();
+        }
+
+        public bool BodyTransform => BodyTransformType != BodyTransformType.None;
     }
 
     public class DestinationDocument
@@ -74,6 +106,15 @@ namespace Domain.Entities.Mongo.Endpoint
         [BsonElement("updatedAt")]
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    }
+
+    public enum BodyTransformType
+    {
+        [Description("None")]
+        None = 0,
+
+        [Description("Transform a XML response into JSON")]
+        XmlToJson = 1
     }
 }
 

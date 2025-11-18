@@ -5,6 +5,7 @@ using Gateway.Application.Authentication.Services.Interfaces;
 using Gateway.Configuration.Jwt;
 using Gateway.DependecyInjection;
 using Gateway.Extensions.YARP.LoadBalancing;
+using Gateway.Extensions.YARP.Response.Transforms.Providers;
 using Gateway.Providers;
 using Gateway.Providers.Interfaces;
 using Infrastructure;
@@ -31,7 +32,9 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddSingleton<ILoadBalancingPolicy, WeightedLoadBalancingPolicy>();
 builder.Services.AddSingleton<ILoadBalancingPolicy, EnabledAwareLoadBalancingPolicy>();
 
-builder.Services.AddReverseProxy();
+builder.Services
+    .AddReverseProxy()
+    .AddTransforms<BodyResponseTransformProvider>();
 
 var app = builder.Build();
 

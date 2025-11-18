@@ -54,7 +54,7 @@ public class OlorinEndpointsConfigRepository(IMongoClient mongo)
 
             foreach (var route in endpoint.Routes)
             {
-                routes.Add(new RouteConfig
+                var item = new RouteConfig()
                 {
                     RouteId = route.Id,
                     ClusterId = clusterId,
@@ -62,13 +62,12 @@ public class OlorinEndpointsConfigRepository(IMongoClient mongo)
                     {
                         Path = route.Match.Path
                     },
-                    Transforms = route.Transforms?
-                    .Select(t => new Dictionary<string, string>
-                    {
-                        { t.Type, t.Value },
-                    }).ToList(),
+                    Metadata = route.BuildMetadata(),
+                    Transforms = route.BuildTransforms(),
                     AuthorizationPolicy = route.Authorization
-                });
+                };
+
+                routes.Add(item);
             }
         }
 
