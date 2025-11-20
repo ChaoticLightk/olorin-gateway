@@ -11,3 +11,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2M
       </tem:ConsultarPropostaCW>
    </soapenv:Body>
 </soapenv:Envelope>
+
+
+###
+POST https://localhost:7111/country/ListOfContinentsByName
+Content-Type: text/xml; charset=utf-8
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ListOfCountryNamesByName xmlns="https://soap-service-free.mock.beeceptor.com/CountryInfoService"/>
+    </soap:Body>
+</soap:Envelope>

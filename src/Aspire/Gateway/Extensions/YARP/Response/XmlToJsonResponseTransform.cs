@@ -1,4 +1,5 @@
 using System.Dynamic;
+using System.IO.Compression;
 using System.Net.Mime;
 using System.Text;
 using System.Xml.Linq;
@@ -26,7 +27,18 @@ public class XmlToJsonResponseTransform : ResponseTransform
 
         var stream = await proxyResponse.Content.ReadAsStreamAsync();
 
-        using var reader = new StreamReader(stream, Encoding.UTF8);
+        Stream finalStream = stream;
+
+        if (proxyResponse.Content.Headers.ContentEncoding.Contains("gzip"))
+        {
+            finalStream = new GZipStream(stream, CompressionMode.Decompress);
+        }
+        else if (proxyResponse.Content.Headers.ContentEncoding.Contains("deflate"))
+        {
+            finalStream = new DeflateStream(stream, CompressionMode.Decompress);
+        }
+
+        using var reader = new StreamReader(finalStream, Encoding.UTF8);
 
         var xmlString = await reader.ReadToEndAsync();
 
@@ -49,6 +61,8 @@ public class XmlToJsonResponseTransform : ResponseTransform
         context.SuppressResponseBody = true;
         context.HttpContext.Response.ContentType = MediaTypeNames.Application.Json;
         context.HttpContext.Response.ContentLength = bytes.Length;
+
+        context.HttpContext.Response.Headers.Remove("Content-Encoding");
 
         await context.HttpContext.Response.Body.WriteAsync(bytes);
     }
