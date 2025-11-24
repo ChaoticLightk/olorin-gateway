@@ -1,0 +1,7 @@
+POST https://localhost:7111/api/authorize
+Content-Type: application/json
+
+{
+    "application": "stock360",
+    "password": "password"
+}

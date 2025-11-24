@@ -1,0 +1,25 @@
+POST https://localhost:7111/INTR
+Content-Type: text/xml; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2MCIsImp0aSI6ImI2NmQ4NjlmLTRjMzAtNDI4YS04ZTUzLWM1YTBiNjRhYTc0NCIsImV4cCI6MTc2MzQ5Njk2NiwiaXNzIjoib2xvcmluLWdhdGV3YXkifQ.RIIKQj_TiRMOEbS7bZSFaOpFdi4IC62-vruuE_lJl2k
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:ConsultarPropostaCW>
+         <tem:pCodFilial>542</tem:pCodFilial>
+         <tem:pCodProposta>9878959</tem:pCodProposta>
+      </tem:ConsultarPropostaCW>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+###
+POST https://localhost:7111/country/ListOfContinentsByName
+Content-Type: text/xml; charset=utf-8
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ListOfCountryNamesByName xmlns="https://soap-service-free.mock.beeceptor.com/CountryInfoService"/>
+    </soap:Body>
+</soap:Envelope>

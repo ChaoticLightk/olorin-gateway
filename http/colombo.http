@@ -1,0 +1,30 @@
+POST https://localhost:7111/DAX/
+Content-Type: application/json
+Authorization: Basic c3RvY2szNjA6cGFzc3dvcmQ=
+
+{
+   "class": "AssistantTransactionService_COL", 
+   "method": "getNextAssistantPreSalesSequence", 
+   "parms": ""
+}
+
+###
+
+POST https://localhost:7111/api/authorize
+Content-Type: application/json
+
+{
+    "Application": "stock360", 
+    "Password": "password"
+}
+
+###
+
+POST https://localhost:7111/DAX/
+Content-Type: application/json
+
+{
+   "class": "AssistantTransactionService_COL", 
+   "method": "getNextAssistantPreSalesSequence", 
+   "parms": ""
+}
