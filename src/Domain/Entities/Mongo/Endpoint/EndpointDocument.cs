@@ -21,6 +21,9 @@ namespace Domain.Entities.Mongo.Endpoint
         [BsonElement("bodyTransformType")]
         public BodyTransformType BodyTransformType { get; set; }
 
+        [BsonElement("rootTransform")]
+        public string BodyTransformRoot { get; set; } = default!; 
+
         [BsonIgnoreIfNull]
         [BsonElement("transforms")]
         public List<TransformDocument>? Transforms { get; set; } = [];
@@ -33,6 +36,7 @@ namespace Domain.Entities.Mongo.Endpoint
             {
                 metadata[nameof(BodyTransform)] = true.ToString();
                 metadata[nameof(BodyTransformType)] = BodyTransformType.ToString();
+                metadata[nameof(BodyTransformRoot)] = BodyTransformRoot.ToString();
             }
 
             return metadata;

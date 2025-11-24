@@ -16,9 +16,12 @@ public class BodyResponseTransformProvider : ITransformProvider
             && context.Route.Metadata?.TryGetValue(nameof(RouteDocument.BodyTransformType), out var type) == true
             && Enum.TryParse<BodyTransformType>(type, out var enumType))
         {
+            var metadata = context.Route.Metadata; 
+
             context.AddResponseTransform(async context =>
             {
-                var transform = BodyResponseTransformFactory.CreateResponseTransform(enumType);
+                var transform = BodyResponseTransformFactory
+                    .CreateResponseTransform(enumType, metadata);
 
                 if(transform is not null)
                     await transform.ApplyAsync(context);
