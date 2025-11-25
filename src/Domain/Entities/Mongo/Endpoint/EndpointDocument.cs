@@ -22,7 +22,7 @@ namespace Domain.Entities.Mongo.Endpoint
         public BodyTransformType BodyTransformType { get; set; }
 
         [BsonElement("rootTransform")]
-        public string BodyTransformRoot { get; set; } = default!; 
+        public string BodyTransformRoot { get; set; } = string.Empty; 
 
         [BsonIgnoreIfNull]
         [BsonElement("transforms")]
