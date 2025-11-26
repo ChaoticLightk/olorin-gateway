@@ -60,7 +60,7 @@ public class OlorinEndpointsConfigRepository(IMongoClient mongo)
                     ClusterId = clusterId,
                     Match = new RouteMatch
                     {
-                        Path = route.Match.Path
+                        Path = route.WildcardPath
                     },
                     Metadata = route.BuildMetadata(),
                     Transforms = route.BuildTransforms(),

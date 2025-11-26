@@ -15,8 +15,11 @@ namespace Domain.Entities.Mongo.Endpoint
         [BsonElement("authorization")]
         public string Authorization { get; set; } = "Anonymous";
 
-        [BsonElement("match")]
-        public MatchDocument Match { get; set; } = default!;
+        [BsonElement("path")]
+        public string Path { get; set; } = default!;
+
+        [BsonElement("wildcard")]
+        public string Wildcard { get; set; } = "{**catch-all}";
 
         [BsonElement("bodyTransformType")]
         public BodyTransformType BodyTransformType { get; set; }
@@ -27,6 +30,9 @@ namespace Domain.Entities.Mongo.Endpoint
         [BsonIgnoreIfNull]
         [BsonElement("transforms")]
         public List<TransformDocument>? Transforms { get; set; } = [];
+
+        [BsonIgnore]
+        public string WildcardPath => $"{Path}/{Wildcard}";
 
         public IReadOnlyDictionary<string, string> BuildMetadata()
         {

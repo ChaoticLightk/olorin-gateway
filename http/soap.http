@@ -1,6 +1,6 @@
-POST https://localhost:7111/INTR
+POST https://localhost:7111/integration-crediare
 Content-Type: text/xml; charset=utf-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2MCIsImp0aSI6ImMyZDcyODEyLTY1MDAtNDM0OC04NjJjLTA0NDQzODA2OTUyNyIsImV4cCI6MTc2NDAwNTE3NywiaXNzIjoib2xvcmluLWdhdGV3YXkifQ.EplA49e5fc3zaqh7mhy6BT9g5ZCkz_yJYC9dRclzmDw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2MCIsImp0aSI6IjBhYTBhMmM1LTgxNTYtNGNiZi1hMDI0LTgwNWQzYzdkODIwZCIsImV4cCI6MTc2NDE2MTQxMSwiaXNzIjoib2xvcmluLWdhdGV3YXkifQ.oW8CjyaUSWpIRcEh4s7WNpOTwjalGeVSNapCWcUBLFI  
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
    <soapenv:Header/>
@@ -12,6 +12,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2M
    </soapenv:Body>
 </soapenv:Envelope>
 
+###
+GET https://localhost:7111/INTR?WSDL
+Authorization: Basic c3RvY2szNjA6cGFzc3dvcmQ=
 
 ###
 POST https://localhost:7111/country/ListOfContinentsByName
