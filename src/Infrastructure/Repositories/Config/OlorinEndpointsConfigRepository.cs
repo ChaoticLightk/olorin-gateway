@@ -12,7 +12,7 @@ public class OlorinEndpointsConfigRepository(IMongoClient mongo)
     private const string ENDPOINTS_COLLECITON_NAME = "endpoints";
 
     private readonly IMongoCollection<EndpointDocument> _endpointsCollection = mongo
-        .GetDatabase(MongoDbConfiguration.DB_NAME)
+        .GetDatabase(MongoDbConfiguration.PROXY_DB)
         .GetCollection<EndpointDocument>(ENDPOINTS_COLLECITON_NAME);
 
     public List<ClusterConfig> GetClusters()

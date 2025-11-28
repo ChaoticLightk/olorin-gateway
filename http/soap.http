@@ -1,6 +1,6 @@
 POST https://localhost:7111/integration-crediare
 Content-Type: text/xml; charset=utf-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2MCIsImp0aSI6IjBhYTBhMmM1LTgxNTYtNGNiZi1hMDI0LTgwNWQzYzdkODIwZCIsImV4cCI6MTc2NDE2MTQxMSwiaXNzIjoib2xvcmluLWdhdGV3YXkifQ.oW8CjyaUSWpIRcEh4s7WNpOTwjalGeVSNapCWcUBLFI  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2MCIsImp0aSI6Ijg0MDY3Mzg2LTFjNGItNGRiYy04OGI0LTg1ODllOTViNGJkNCIsImV4cCI6MTc2NDI2OTY5OSwiaXNzIjoib2xvcmluLWdhdGV3YXkifQ.zl1kxXg5NW_JoT8lZ_pug1Jx3rpcvfAcAvS-DFMo93Y 
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
    <soapenv:Header/>

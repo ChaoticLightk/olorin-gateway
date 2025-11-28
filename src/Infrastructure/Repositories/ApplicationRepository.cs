@@ -10,7 +10,7 @@ public class ApplicationRepository(IMongoClient mongo) : IApplicationRepository
     private const string APPLICATION_COLLECTION_NAME = "applications";
 
     private readonly IMongoCollection<ApplicationDocument> _appplicatonDocument = mongo 
-        .GetDatabase(MongoDbConfiguration.DB_NAME)
+        .GetDatabase(MongoDbConfiguration.PROXY_DB)
         .GetCollection<ApplicationDocument>(APPLICATION_COLLECTION_NAME);
 
     public async Task<ApplicationDocument> GetApplicationDocumentAsync(string application)

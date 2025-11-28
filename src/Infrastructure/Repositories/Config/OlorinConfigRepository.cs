@@ -14,11 +14,11 @@ public class OlorinConfigRepository(IMongoClient mongo)
     private const string CLUSTERS_COLLECITON_NAME = "clusters";
 
     private readonly IMongoCollection<RouteDocument> _routesCollection = mongo
-        .GetDatabase(MongoDbConfiguration.DB_NAME)
+        .GetDatabase(MongoDbConfiguration.PROXY_DB)
         .GetCollection<RouteDocument>(ROUTES_COLLECTION_NAME);
 
     private readonly IMongoCollection<ClusterDocument> _clustersCollection = mongo
-        .GetDatabase(MongoDbConfiguration.DB_NAME)
+        .GetDatabase(MongoDbConfiguration.PROXY_DB)
         .GetCollection<ClusterDocument>(CLUSTERS_COLLECITON_NAME);
 
     public List<ClusterConfig> GetClusters()

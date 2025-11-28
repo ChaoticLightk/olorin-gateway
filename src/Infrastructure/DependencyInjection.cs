@@ -11,7 +11,7 @@ public static class DependencyInjection
 {
     public static WebApplicationBuilder AddInfrastructure(this WebApplicationBuilder builder)
     {
-        builder.AddMongoDBClient(MongoDbConfiguration.DB_NAME);
+        builder.AddMongoDBClient(MongoDbConfiguration.PROXY_DB);
 
         builder.Services.AddSingleton<IConfigRepository, OlorinEndpointsConfigRepository>();
 

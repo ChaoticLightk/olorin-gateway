@@ -9,8 +9,12 @@ var mongo = builder
         MongoDbConfiguration.DEPENDENCY_NAME,
         MongoDbConfiguration.DB_PORT)
     .WithDataVolume()
-    .WithLifetime(ContainerLifetime.Persistent)
-    .AddDatabase(MongoDbConfiguration.DB_NAME);
+    .WithLifetime(ContainerLifetime.Persistent);
+
+var proxyDb = mongo
+    .AddDatabase(MongoDbConfiguration.PROXY_DB);
+var queues = mongo
+    .AddDatabase(MongoDbConfiguration.QUEUES_DB);
 
 var redis = builder
     .AddRedis(RedisConfiguration.DEPENDENCY_NAME)
@@ -19,12 +23,19 @@ var redis = builder
         interval: TimeSpan.FromMinutes(2),
         keysChangedThreshold: 100);
 
+var rabbitmq = builder
+    .AddRabbitMQ(RabbitMQConfiguration.CONNECTION_NAME)
+    .WithDataVolume(isReadOnly: false)
+    .WithManagementPlugin();
+
 var gateway = builder
     .AddProject<Projects.Gateway>(ProjectNames.GATEWAY)
     .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT)
-    .WithReference(mongo)
+    .WithReference(proxyDb)
+    .WithReference(queues)
     .WithReference(redis)
-    .WaitFor(mongo)
+    .WaitFor(proxyDb)
+    .WaitFor(queues)
     .WaitFor(redis)
     .WithOtlpExporter();
 

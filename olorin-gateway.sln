@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{8C00D365-74F1-475B-9A29-18EFAAFAE28D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{984BB9B3-3FA3-BE33-9484-CAC21695A33C}"
+	ProjectSection(SolutionItems) = preProject
+		TODO_DatabaseExecutionContainer = TODO_DatabaseExecutionContainer
+		TODO_QueueExecutionContainer = TODO_QueueExecutionContainer
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,5 +104,6 @@ Global
 		{0DB5539A-24A6-4727-8563-64F5CFED72BB} = {52BF7FB6-37FF-5100-EFD1-124EFF302675}
 		{F87EF14F-E413-49A0-8B1B-AB2B23856C1D} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{8C00D365-74F1-475B-9A29-18EFAAFAE28D} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{984BB9B3-3FA3-BE33-9484-CAC21695A33C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal
