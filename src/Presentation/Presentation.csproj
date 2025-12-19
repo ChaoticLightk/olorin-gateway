@@ -12,6 +12,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.1.0" />
     <PackageReference Include="Yarp.ReverseProxy" Version="2.3.0" />
   </ItemGroup>
 

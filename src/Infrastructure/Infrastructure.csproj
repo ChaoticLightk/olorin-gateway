@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.0.1" />
-    <PackageReference Include="Aspire.MongoDB.Driver" Version="13.0.1" />
+    <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.1.0" />
+    <PackageReference Include="Aspire.MongoDB.Driver" Version="13.1.0" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
     <PackageReference Include="Yarp.ReverseProxy" Version="2.3.0" />
   </ItemGroup>
 
