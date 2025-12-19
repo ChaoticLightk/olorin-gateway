@@ -1,8 +1,8 @@
 using Domain.Entities.Mongo.Cluster;
 using Domain.Entities.Mongo.Route;
 using Domain.Repositories.Interfaces;
-using Domain.Shared.Constants;
 using MongoDB.Driver;
+using Shared.Constants;
 using Yarp.ReverseProxy.Configuration;
 
 namespace Infrastructure.Repositories.Config;

@@ -1,9 +1,9 @@
 ﻿using Domain.Repositories.Interfaces;
-using Domain.Shared.Constants;
 using Infrastructure.Repositories.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shared.Constants;
 
 namespace Infrastructure;
 

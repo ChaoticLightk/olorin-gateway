@@ -4,17 +4,22 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <IsAspireSharedProject>false</IsAspireSharedProject>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.0.1" />
+    <Folder Include="Endpoints\Auth\" />
+    <Folder Include="Endpoints\Interfaces\" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="Yarp.ReverseProxy" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Providers\" />
-    <Folder Include="Providers\Interfaces\" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
 </Project>

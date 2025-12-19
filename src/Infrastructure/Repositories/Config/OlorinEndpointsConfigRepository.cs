@@ -1,7 +1,7 @@
 using Domain.Entities.Mongo.Endpoint;
 using Domain.Repositories.Interfaces;
-using Domain.Shared.Constants;
 using MongoDB.Driver;
+using Shared.Constants;
 using Yarp.ReverseProxy.Configuration;
 
 namespace Infrastructure.Repositories.Config;
