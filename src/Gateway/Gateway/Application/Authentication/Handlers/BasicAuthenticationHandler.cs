@@ -2,7 +2,7 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
-using Domain.Data.Auth.Services.Interfaces;
+using Gateway.Domain.Data.Auth.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
 

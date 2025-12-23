@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Routing;
 
-namespace Presentation.Endpoints.Interfaces;
+namespace Extensions.Endpoints.Abstractions;
 
 public interface IEndpointMapper
 {
     void Map(IEndpointRouteBuilder app);
 }
+

@@ -10,11 +10,16 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.1.0" />
     <PackageReference Include="Yarp.ReverseProxy" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Providers\" />
     <Folder Include="Providers\Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MiddleR\MiddleR\MiddleR.csproj" />
   </ItemGroup>
 
 </Project>

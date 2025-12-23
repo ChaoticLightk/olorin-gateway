@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Endpoints\Auth\" />
-    <Folder Include="Endpoints\Interfaces\" />
   </ItemGroup>
   
   <ItemGroup>
@@ -20,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MiddleR\MiddleR\MiddleR.csproj" />
+    <ProjectReference Include="..\..\Shared\Extensions\Extensions.csproj" />
     <ProjectReference Include="..\Gateway.Domain\Gateway.Domain.csproj" />
   </ItemGroup>
 </Project>

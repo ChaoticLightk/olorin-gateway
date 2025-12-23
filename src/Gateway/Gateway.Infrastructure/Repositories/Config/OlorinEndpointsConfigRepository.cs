@@ -1,5 +1,5 @@
-using Domain.Repositories.Interfaces;
 using Gateway.Domain.Entities.Mongo.Endpoint;
+using Gateway.Domain.Repositories.Interfaces;
 using MongoDB.Driver;
 using Shared.Constants;
 using Yarp.ReverseProxy.Configuration;

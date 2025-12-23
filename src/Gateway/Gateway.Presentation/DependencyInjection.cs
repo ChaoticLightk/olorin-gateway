@@ -1,9 +1,7 @@
-using System;
+using Extensions.Endpoints;
 using Microsoft.AspNetCore.Builder;
-using Presentation.Endpoints;
-using Presentation.Endpoints.Proxy;
 
-namespace Presentation;
+namespace Gateway.Presentation;
 
 public static class DependencyInjection
 {

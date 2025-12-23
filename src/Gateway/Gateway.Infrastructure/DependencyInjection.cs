@@ -1,4 +1,4 @@
-﻿using Domain.Repositories.Interfaces;
+﻿using Gateway.Domain.Repositories.Interfaces;
 using Infrastructure.Repositories.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;

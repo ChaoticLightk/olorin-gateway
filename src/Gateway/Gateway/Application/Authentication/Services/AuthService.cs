@@ -2,18 +2,16 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using Domain.Data.Auth.Services.Interfaces;
-using Domain.Repositories.Interfaces;
-using Gateway.Configuration.Jwt;
+using Gateway.Domain.Configuration.Jwt;
+using Gateway.Domain.Data.Auth.Services.Interfaces;
 using Gateway.Domain.Entities.Mongo.Application;
+using Gateway.Domain.Repositories.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Gateway.Application.Authentication.Services;
 
-
-
-public class AuthenticationService(
+public class AuthService(
     IOptions<JWTSettings> options,
     IApplicationRepository repository) : IAuthService 
 {

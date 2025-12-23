@@ -1,4 +1,4 @@
-namespace Gateway.Configuration.Jwt;
+namespace Gateway.Domain.Configuration.Jwt;
 
 public class JWTSettings
 {

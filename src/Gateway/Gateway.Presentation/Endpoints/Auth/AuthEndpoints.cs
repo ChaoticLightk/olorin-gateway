@@ -1,24 +1,25 @@
-using Domain.Data.Auth.DTO;
-using Domain.Data.Auth.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-using Presentation.Endpoints.Interfaces;
 using Microsoft.AspNetCore.Builder;
+using Extensions.Endpoints.Abstractions;
+using Gateway.Domain.Data.Auth.DTO;
+using MiddleR.Abstractions;
+using Gateway.Domain.Data.Auth.Command;
 
-namespace Presentation.Endpoints.Auth;
+namespace Gateway.Presentation.Endpoints.Auth;
 
 public class AuthEndpoints : IEndpointMapper
 {
     public void Map(IEndpointRouteBuilder app)
     {
         app.MapPost("/api/authorize", static async (
-            [FromServices] IAuthService service,
+            [FromServices] IServiceBus service,
             [FromBody] AuthorizeRequest request) =>
         {
-            var result = await service.AuthorizeApplication(
-                request.Application,
-                request.Password);
+            var result = await service.Send(new AuthorizeApplicationCommand(
+                request.Application, 
+                request.Password));
 
             if (result is not null)
             {

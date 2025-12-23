@@ -1,4 +1,4 @@
-namespace Domain.Providers.Interfaces;
+namespace Gateway.Domain.Providers.Interfaces;
 
 public interface IReloadableProxyConfigProvider
 {

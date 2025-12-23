@@ -51,7 +51,7 @@ var gateway = builder
     .AddProject<Projects.Gateway>(ProjectNames.GATEWAY)
     .WithHttpHealthCheck(DEFAULT_HEALTH_CHECK_ENDPOINT)
     .WithReference(proxyDb)
-    .WithReference(redis)
+    // .WithReference(redis)
     .WithOtlpExporter();
 
 builder.Build().Run();

@@ -1,4 +1,4 @@
-namespace Domain.Data.Auth.Services.Interfaces;
+namespace Gateway.Domain.Data.Auth.Services.Interfaces;
 
 public interface IAuthService
 {

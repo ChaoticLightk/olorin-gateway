@@ -1,12 +1,12 @@
-using Domain.Providers.Interfaces;
+using Extensions.Endpoints.Abstractions;
+using Gateway.Domain.Providers.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
-using Presentation.Endpoints.Interfaces;
 using Yarp.ReverseProxy.Configuration;
 
-namespace Presentation.Endpoints.Proxy;
+namespace Gateway.Presentation.Endpoints.Proxy;
 
 public class ProxyEndpoints : IEndpointMapper
 {

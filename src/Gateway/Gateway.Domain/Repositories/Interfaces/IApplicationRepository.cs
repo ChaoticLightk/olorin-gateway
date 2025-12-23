@@ -1,6 +1,6 @@
 using Gateway.Domain.Entities.Mongo.Application;
 
-namespace Domain.Repositories.Interfaces;
+namespace Gateway.Domain.Repositories.Interfaces;
 
 public interface IApplicationRepository
 {
