@@ -5,7 +5,7 @@ namespace Gateway.Presentation;
 
 public static class DependencyInjection
 {
-    public static void AddPresentation(this WebApplication app)
+    public static void ConfigurePresentation(this WebApplication app)
     {
         app.MapEndpointsFromAssembly();
     }

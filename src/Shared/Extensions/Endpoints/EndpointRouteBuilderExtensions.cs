@@ -2,11 +2,17 @@ using System.Reflection;
 using Extensions.Endpoints.Abstractions;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using Scalar.AspNetCore;
 
 namespace Extensions.Endpoints;
 
-public static class EndpointMapperExtensions
+public static class EndpointRouteBuilderExtensions
 {
+    public static void ConfigureScalar(this IEndpointRouteBuilder app)
+    {
+        app.MapScalarApiReference();
+    }
+
     public static void MapEndpointsFromAssembly(this IEndpointRouteBuilder app)
     {
         var mappers = AppDomain.CurrentDomain
@@ -23,6 +29,7 @@ public static class EndpointMapperExtensions
         mappers.ForEach(map => map.Map(app));
     }
 
+    #region Private
     private static IEnumerable<Type> GetTypesSafely(Assembly assembly)
     {
         try
@@ -34,4 +41,5 @@ public static class EndpointMapperExtensions
             return ex.Types.Where(t => t != null)!;
         }
     }
+    #endregion
 }
