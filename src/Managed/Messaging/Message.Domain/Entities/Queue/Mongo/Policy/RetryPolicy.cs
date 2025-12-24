@@ -5,15 +5,22 @@ namespace Messaging.Domain.Entities.Queue.Mongo.Policy;
 
 public class RetryPolicy
 {
+    private RetryPolicy() { }
+
+    public static RetryPolicy CreateInstance()
+    {
+        return new RetryPolicy();
+    }
+
     [BsonElement(nameof(MaxRetries))]
-    public int MaxRetries { get; set; }
+    public ushort MaxRetries { get; set; } = 0;
 
     [BsonElement(nameof(BaseDelaySeconds))]
-    public int BaseDelaySeconds { get; set; }
+    public uint BaseDelaySeconds { get; set; } = 0;
 
     [BsonElement(nameof(PenaltyFactor))]
-    public double PenaltyFactor { get; set; }
+    public double PenaltyFactor { get; set; } = 0;
 
     [BsonElement(nameof(MaxDelaySeconds))]
-    public int MaxDelaySeconds { get; set; }
+    public uint MaxDelaySeconds { get; set; } = 0;
 }

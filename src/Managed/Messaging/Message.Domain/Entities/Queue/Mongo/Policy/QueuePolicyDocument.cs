@@ -5,30 +5,49 @@ namespace Messaging.Domain.Entities.Queue.Mongo.Policy;
 
 public class QueuePolicyDocument
 {
+    private QueuePolicyDocument(string name)
+    {
+       QueueName = name; 
+    }
+
+    public static QueuePolicyDocument CreateInstance(string name)
+        => new(name);
+
+    public static QueuePolicyDocument CreateInstance(
+        string name,
+        QueueMetadata metadata
+    )
+    {
+        return new QueuePolicyDocument(name)
+        {
+            Metadata = metadata
+        };
+    }
+
     [BsonId]
     [BsonRepresentation(BsonType.String)]
-    public string QueueName { get; set; } = default!;
+    public string QueueName { get; set; }
 
     [BsonElement(nameof(Enabled))]
-    public bool Enabled { get; set; }
+    public bool Enabled { get; set; } = false;
 
     [BsonElement(nameof(EnabledDeadLetter))]
     public bool EnabledDeadLetter { get; set; } = false;
 
-    [BsonElement(nameof(RetryPolicy))]
-    public RetryPolicy RetryPolicy { get; set; } = new();
-
     [BsonElement(nameof(Version))]
-    public short Version { get; set; }
+    public ushort Version { get; set; } = 1;
+
+    [BsonElement(nameof(RetryPolicy))]
+    public RetryPolicy? RetryPolicy { get; set; } 
 
     [BsonElement(nameof(Metadata))]
-    public QueueMetadata Metadata { get; set; } = new();
+    public QueueMetadata? Metadata { get; set; }
 
     [BsonElement(nameof(CreatedAt))]
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     [BsonElement(nameof(UpdatedAt))]
-    public DateTime UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
     [BsonElement(nameof(DeletedAt))]
     public DateTime? DeletedAt { get; set; } = null;

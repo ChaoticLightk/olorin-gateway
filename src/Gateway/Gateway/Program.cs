@@ -2,8 +2,8 @@ using Extensions.Endpoints;
 using Gateway.DependecyInjection;
 using Gateway.Domain;
 using Gateway.Extensions.YARP.Response.Transforms.Providers;
+using Gateway.Infrastructure;
 using Gateway.Presentation;
-using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

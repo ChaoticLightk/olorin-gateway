@@ -8,13 +8,18 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.1.0" />
+    <PackageReference Include="WolverineFx" Version="5.9.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Data\Services\" />
-    <Folder Include="Data\Services\Interfaces\" />
+    <Folder Include="Data\Abstractions\" />
+    <Folder Include="Data\Abstractions\Wolwerine\" />
     <Folder Include="Entities\Queue\Mongo\History\" />
+    <Folder Include="Persistence\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Aspire\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>

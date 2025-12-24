@@ -8,6 +8,19 @@
 
   <ItemGroup>
     <Folder Include="Endpoints\" />
+    <Folder Include="Endpoints\Policy\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="WolverineFx" Version="5.9.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Extensions\Extensions.csproj" />
+    <ProjectReference Include="..\Message.Domain\Messaging.Domain.csproj" />
+  </ItemGroup>
 </Project>

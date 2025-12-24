@@ -3,7 +3,7 @@ using Gateway.Domain.Repositories.Interfaces;
 using MongoDB.Driver;
 using Shared.Constants;
 
-namespace Infrastructure.Repositories;
+namespace Gateway.Infrastructure.Repositories;
 
 public class ApplicationRepository(IMongoClient mongo) : IApplicationRepository
 {

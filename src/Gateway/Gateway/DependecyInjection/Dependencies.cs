@@ -4,8 +4,8 @@ using Gateway.Domain.Configuration.Jwt;
 using Gateway.Domain.Data.Auth.Services.Interfaces;
 using Gateway.Domain.Repositories.Interfaces;
 using Gateway.Extensions.YARP.LoadBalancing;
+using Gateway.Infrastructure.Repositories;
 using Gateway.Providers;
-using Infrastructure.Repositories;
 using Yarp.ReverseProxy.Configuration;
 using Yarp.ReverseProxy.LoadBalancing;
 

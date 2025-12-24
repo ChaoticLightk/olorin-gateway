@@ -4,7 +4,7 @@ using MongoDB.Driver;
 using Shared.Constants;
 using Yarp.ReverseProxy.Configuration;
 
-namespace Infrastructure.Repositories.Config;
+namespace Gateway.Infrastructure.Repositories.Config;
 
 public class OlorinEndpointsConfigRepository(IMongoClient mongo)
     : IConfigRepository
