@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Builder;
 using Extensions.Endpoints.Abstractions;
 using Gateway.Domain.Data.Auth.DTO;
-using MiddleR.Abstractions;
 using Gateway.Domain.Data.Auth.Command;
+using Wolverine;
 
 namespace Gateway.Presentation.Endpoints.Auth;
 
@@ -14,10 +14,10 @@ public class AuthEndpoints : IEndpointMapper
     public void Map(IEndpointRouteBuilder app)
     {
         app.MapPost("/api/authorize", static async (
-            [FromServices] IServiceBus service,
+            [FromServices] IMessageBus bus,
             [FromBody] AuthorizeRequest request) =>
         {
-            var result = await service.Send(new AuthorizeApplicationCommand(
+            var result = await bus.InvokeAsync<string?>(new AuthorizeApplicationCommand(
                 request.Application, 
                 request.Password));
 

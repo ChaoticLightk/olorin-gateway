@@ -12,6 +12,7 @@
   
   <ItemGroup>
     <PackageReference Include="Yarp.ReverseProxy" Version="2.3.0" />
+    <PackageReference Include="WolverineFx" Version="5.9.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MiddleR\MiddleR\MiddleR.csproj" />
     <ProjectReference Include="..\..\Shared\Extensions\Extensions.csproj" />
     <ProjectReference Include="..\Gateway.Domain\Gateway.Domain.csproj" />
   </ItemGroup>

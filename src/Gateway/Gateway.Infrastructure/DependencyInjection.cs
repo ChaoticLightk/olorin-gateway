@@ -13,7 +13,7 @@ public static class DependencyInjection
     {
         builder.AddMongoDBClient(MongoDbConfiguration.PROXY_DB);
 
-        builder.Services.AddSingleton<IConfigRepository, OlorinEndpointsConfigRepository>();
+        builder.Services.AddSingleton<IConfigRepository, MongoEndpointsConfigRepository>();
 
         return builder;
     }

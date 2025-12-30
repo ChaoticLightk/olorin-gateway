@@ -15,7 +15,6 @@
     <Folder Include="Data\Abstractions\" />
     <Folder Include="Data\Abstractions\Wolwerine\" />
     <Folder Include="Entities\Queue\Mongo\History\" />
-    <Folder Include="Persistence\" />
   </ItemGroup>
 
   <ItemGroup>

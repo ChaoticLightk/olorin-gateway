@@ -28,7 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Aspire\ServiceDefaults\ServiceDefaults.csproj" />
     <ProjectReference Include="..\..\Aspire\Shared\Shared.csproj" />
-    <ProjectReference Include="..\..\MiddleR\MiddleR\MiddleR.csproj" />
     <ProjectReference Include="..\..\Shared\Extensions\Extensions.csproj" />
     <ProjectReference Include="..\Gateway.Domain\Gateway.Domain.csproj" />
     <ProjectReference Include="..\Gateway.Infrastructure\Gateway.Infrastructure.csproj" />

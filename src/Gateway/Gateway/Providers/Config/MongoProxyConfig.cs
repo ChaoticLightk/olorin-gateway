@@ -3,7 +3,7 @@ using Yarp.ReverseProxy.Configuration;
 
 namespace Gateway.Providers.Config;
 
-public class OlorinProxyConfig(
+public class MongoProxyConfig(
     List<RouteConfig> routes,
     List<ClusterConfig> clusters) : IProxyConfig
 {

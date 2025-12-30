@@ -1,4 +1,7 @@
+using Messaging.Domain.Data.Policy.Persistence.Abstractions;
+using Messaging.Infrastructure.Persistence.Policy.Mongo;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Constants;
 
@@ -10,6 +13,9 @@ public static class DependencyInjection
     {
         builder.AddRabbitMQClient(RabbitMQConfiguration.CONNECTION_NAME);
         builder.AddMongoDBClient(MongoDbConfiguration.QUEUES_DB);
+
+        builder.Services.AddScoped<IQueuePolicyRepository, QueuePolicyRepository>();
+
         return builder;
     }
 }

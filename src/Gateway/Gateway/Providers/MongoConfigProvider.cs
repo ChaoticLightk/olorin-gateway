@@ -5,7 +5,7 @@ using Yarp.ReverseProxy.Configuration;
 
 namespace Gateway.Providers;
 
-public class OlorinConfigProvider(IConfigRepository repository) 
+public class MongoConfigProvider(IConfigRepository repository) 
     : IProxyConfigProvider, IReloadableProxyConfigProvider
 {
     private IProxyConfig _config = LoadConfig(repository);
@@ -14,12 +14,12 @@ public class OlorinConfigProvider(IConfigRepository repository)
 
     private readonly Lock _lock = new();
 
-    private static OlorinProxyConfig LoadConfig(IConfigRepository repo)
+    private static MongoProxyConfig LoadConfig(IConfigRepository repo)
     {
         var routes = repo.GetRoutes();
         var clusters = repo.GetClusters();
 
-        return new OlorinProxyConfig(routes, clusters); 
+        return new MongoProxyConfig(routes, clusters); 
     }
 
     public void Reload()
@@ -30,7 +30,7 @@ public class OlorinConfigProvider(IConfigRepository repository)
             var old = _config;
 
             _config = @new;
-            ((OlorinProxyConfig)old).SignalChange();
+            ((MongoProxyConfig)old).SignalChange();
         }
     }
 }

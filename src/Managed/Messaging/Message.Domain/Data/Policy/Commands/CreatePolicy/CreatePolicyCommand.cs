@@ -1,3 +1,3 @@
 namespace Messaging.Domain.Data.Policy.Commands.CreatePolicy;
 
-public record CreatePolicyCommand();
+public record CreatePolicyCommand(string PolicyName);

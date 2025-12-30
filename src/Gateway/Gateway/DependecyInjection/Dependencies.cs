@@ -17,7 +17,7 @@ public static class Dependencies
     {
         builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection(JWTSettings.SECTION_NAME));
 
-        builder.Services.AddSingleton<IProxyConfigProvider, OlorinConfigProvider>();
+        builder.Services.AddSingleton<IProxyConfigProvider, MongoConfigProvider>();
         builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
         builder.Services.AddScoped<IAuthService, AuthService>();
 

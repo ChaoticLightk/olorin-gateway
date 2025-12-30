@@ -4,7 +4,7 @@ using Wolverine.Attributes;
 
 [assembly: WolverineModule]
 
-namespace Gateway.Domain;
+namespace Messaging.Domain;
 
 public static class DependencyInjection
 {

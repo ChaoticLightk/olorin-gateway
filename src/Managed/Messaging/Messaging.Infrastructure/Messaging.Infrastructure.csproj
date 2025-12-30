@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Aspire\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Message.Domain\Messaging.Domain.csproj" />
   </ItemGroup>
 
 </Project>

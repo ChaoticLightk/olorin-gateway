@@ -6,7 +6,7 @@ using Yarp.ReverseProxy.Configuration;
 
 namespace Gateway.Infrastructure.Repositories.Config;
 
-public class OlorinEndpointsConfigRepository(IMongoClient mongo)
+public class MongoEndpointsConfigRepository(IMongoClient mongo)
     : IConfigRepository
 {
     private const string ENDPOINTS_COLLECITON_NAME = "endpoints";

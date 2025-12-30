@@ -1,9 +1,8 @@
-using System;
 using Extensions.Endpoints.Abstractions;
 using Messaging.Domain.Data.Policy.Commands.CreatePolicy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Wolverine;
 
@@ -13,12 +12,14 @@ public class QueuePolicyEndpoints : IEndpointMapper
 {
     public void Map(IEndpointRouteBuilder app)
     {
-        app.MapPost("/messaging/policy", static async (CreatePolicyCommand request, IMessageBus bus) =>
+        app.MapPost("/messaging/policy", static async ([FromBody] CreatePolicyCommand request, IMessageBus bus) =>
         {
             var result = await bus.InvokeAsync<bool>(request);
 
-            if(result)
+            if (result)
+            {
                 return Results.Ok();
+            }
 
             return Results.InternalServerError();
         });
