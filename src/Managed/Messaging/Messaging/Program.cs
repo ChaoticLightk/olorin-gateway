@@ -8,8 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-// builder.Host.UseWolverine();
-
 builder.AddServiceDefaults();
 
 builder.AddInfrastructure();

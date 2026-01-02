@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+	<PackageReference Include="Colombo.ResultPattern" Version="8.0.0" />
+	<PackageReference Include="Colombo.ResultPattern.AspNetCore" Version="8.0.0" />
     <PackageReference Include="WolverineFx" Version="5.9.2" />
   </ItemGroup>
   

@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Aspire.RabbitMQ.Client" Version="13.1.0" />
     <PackageReference Include="Aspire.MongoDB.Driver" Version="13.1.0" />
+	<PackageReference Include="Colombo.ResultPattern" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,25 +5,6 @@ namespace Messaging.Domain.Entities.Queue.Mongo.Policy;
 
 public class QueuePolicyDocument
 {
-    private QueuePolicyDocument(string name)
-    {
-       QueueName = name; 
-    }
-
-    public static QueuePolicyDocument CreateInstance(string name)
-        => new(name);
-
-    public static QueuePolicyDocument CreateInstance(
-        string name,
-        QueueMetadata metadata
-    )
-    {
-        return new QueuePolicyDocument(name)
-        {
-            Metadata = metadata
-        };
-    }
-
     [BsonId]
     [BsonRepresentation(BsonType.String)]
     public string QueueName { get; set; }
@@ -35,7 +16,7 @@ public class QueuePolicyDocument
     public bool EnabledDeadLetter { get; set; } = false;
 
     [BsonElement(nameof(Version))]
-    public ushort Version { get; set; } = 1;
+    public int Version { get; set; } = 1;
 
     [BsonElement(nameof(RetryPolicy))]
     public RetryPolicy? RetryPolicy { get; set; } 
@@ -51,4 +32,59 @@ public class QueuePolicyDocument
 
     [BsonElement(nameof(DeletedAt))]
     public DateTime? DeletedAt { get; set; } = null;
+
+    private QueuePolicyDocument(string name)
+    {
+       QueueName = name; 
+    }
+
+    public static QueuePolicyDocument CreateInstance(string name)
+        => new(name);
+
+    public static QueuePolicyDocument CreateInstance(
+        string name,
+        QueueMetadata? metadata
+    )
+    {
+        return new QueuePolicyDocument(name)
+        {
+            Metadata = metadata
+        };
+    }
+
+    public static QueuePolicyDocument CreateInstance(
+        string name,
+        RetryPolicy? retry
+    )
+    {
+        return new QueuePolicyDocument(name)
+        {
+            RetryPolicy = retry,
+        };
+    }
+
+    public static QueuePolicyDocument CreateInstance(
+        string name,
+        RetryPolicy? retry,
+        QueueMetadata? metadata
+    )
+    {
+        return new QueuePolicyDocument(name)
+        {
+            RetryPolicy = retry,
+            Metadata = metadata
+        };
+    }
+
+    public void UpgradeVersion()
+    {
+        Version++;
+    }
+
+    public void SoftDelete()
+    {
+        Enabled = false;
+        EnabledDeadLetter = false;
+        DeletedAt = DateTime.Now;
+    }
 }

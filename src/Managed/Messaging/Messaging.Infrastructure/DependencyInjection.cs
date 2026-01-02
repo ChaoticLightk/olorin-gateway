@@ -1,4 +1,4 @@
-using Messaging.Domain.Data.Policy.Persistence.Abstractions;
+using Messaging.Domain.Persistence.Abstractions;
 using Messaging.Infrastructure.Persistence.Policy.Mongo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;

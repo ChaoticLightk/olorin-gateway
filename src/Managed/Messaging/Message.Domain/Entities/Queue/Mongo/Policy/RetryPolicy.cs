@@ -7,9 +7,20 @@ public class RetryPolicy
 {
     private RetryPolicy() { }
 
-    public static RetryPolicy CreateInstance()
+    public static RetryPolicy CreateInstance(
+        ushort maxRetries,
+        uint delayInSeconds,
+        double penaltyFactor,
+        uint maxDelayInSeconds
+    )
     {
-        return new RetryPolicy();
+        return new RetryPolicy()
+        {
+            MaxRetries = maxRetries,
+            BaseDelaySeconds = delayInSeconds,
+            PenaltyFactor = penaltyFactor,
+            MaxDelaySeconds = maxDelayInSeconds
+        };
     }
 
     [BsonElement(nameof(MaxRetries))]
