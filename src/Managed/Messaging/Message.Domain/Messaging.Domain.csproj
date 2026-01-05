@@ -14,12 +14,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Chain\" />
+    <Folder Include="Chain\Exceptions\" />
+    <Folder Include="Chain\Exceptions\Handlers\" />
+    <Folder Include="Chain\Middlewares\" />
     <Folder Include="Data\Abstractions\" />
     <Folder Include="Data\Abstractions\Wolwerine\" />
     <Folder Include="Data\Policy\Commands\Delete\" />
+    <Folder Include="Data\Policy\Commands\Provision\" />
     <Folder Include="Data\Policy\Commands\Update\" />
     <Folder Include="Data\Policy\Queries\GetById\" />
     <Folder Include="Entities\Queue\Mongo\History\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Exceptions\Messaging\" />
+    <Folder Include="Shared\Messaging\DTO\" />
   </ItemGroup>
 
   <ItemGroup>

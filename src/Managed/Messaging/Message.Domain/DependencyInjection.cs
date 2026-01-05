@@ -14,6 +14,7 @@ public static class DependencyInjection
         builder.Host.UseWolverine(otps =>
         {
             otps.UseFluentValidation();
+            // otps.Policies.AddMiddleware<ValidationMiddleware>();
         });
 
         return builder;

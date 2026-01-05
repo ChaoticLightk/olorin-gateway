@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Endpoints\" />
     <Folder Include="Endpoints\Policy\" />
+    <Folder Include="Endpoints\Queue\" />
   </ItemGroup>
   
   <ItemGroup>

@@ -30,10 +30,13 @@ public record PolicyQueueData(
                 metadata.Owner);
         }
 
-        var document = QueuePolicyDocument.CreateInstance(
-            Name,
-            retryPolicy,
-            queueMetadata);
+        var document = QueuePolicyDocument
+            .CreateInstance(
+                Name,
+                retryPolicy,
+                queueMetadata,
+                Enabled,
+                EnabledDeadLetter);
 
         return document;
     }

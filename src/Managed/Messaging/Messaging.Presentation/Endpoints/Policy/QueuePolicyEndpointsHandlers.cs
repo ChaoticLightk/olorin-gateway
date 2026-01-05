@@ -2,6 +2,7 @@ using Colombo.ResultPattern;
 using Colombo.ResultPattern.AspNetCore.MinimalApi;
 using Messaging.Domain.Data.Policy.Commands.Create;
 using Messaging.Domain.Data.Policy.Commands.Delete;
+using Messaging.Domain.Data.Policy.Commands.Provision;
 using Messaging.Domain.Data.Policy.Commands.Update;
 using Messaging.Domain.Data.Policy.Queries.DTO;
 using Messaging.Domain.Data.Policy.Queries.Get;
@@ -14,13 +15,19 @@ namespace Messaging.Presentation.Endpoints.Policy;
 
 public partial class QueuePolicyEndpoints 
 {
-    static async Task<IResult> CreatePolicy(IMessageBus bus, [FromBody] CreatePolicyCommand request)
+    static async Task<IResult> CreatePolicy([FromBody] CreatePolicyCommand request, IMessageBus bus)
     {
         var result = await bus.InvokeAsync<Result>(request);
         return result.ToMinimalResult();
     }
 
-    static async Task<IResult> PatchPolicyById([FromBody] UpdatePolicyCommand request, IMessageBus bus)
+    static async Task<IResult> PatchPolicy([FromBody] UpdatePolicyCommand request, IMessageBus bus)
+    {
+        var result = await bus.InvokeAsync<Result>(request);
+        return result.ToMinimalResult();
+    }
+
+    static async Task<IResult> ProvisionPolicy([FromBody] ProvisionPolicyCommand request, IMessageBus bus)
     {
         var result = await bus.InvokeAsync<Result>(request);
         return result.ToMinimalResult();

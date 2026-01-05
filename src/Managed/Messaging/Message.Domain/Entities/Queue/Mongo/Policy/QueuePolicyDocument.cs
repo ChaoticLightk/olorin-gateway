@@ -25,7 +25,7 @@ public class QueuePolicyDocument
     public QueueMetadata? Metadata { get; set; }
 
     [BsonElement(nameof(CreatedAt))]
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; private set; }
 
     [BsonElement(nameof(UpdatedAt))]
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
@@ -36,6 +36,7 @@ public class QueuePolicyDocument
     private QueuePolicyDocument(string name)
     {
        QueueName = name; 
+       CreatedAt = DateTime.Now;
     }
 
     public static QueuePolicyDocument CreateInstance(string name)
@@ -66,19 +67,24 @@ public class QueuePolicyDocument
     public static QueuePolicyDocument CreateInstance(
         string name,
         RetryPolicy? retry,
-        QueueMetadata? metadata
+        QueueMetadata? metadata,
+        bool enabled = false,
+        bool enabledDeadLetter = false
     )
     {
         return new QueuePolicyDocument(name)
         {
             RetryPolicy = retry,
-            Metadata = metadata
+            Metadata = metadata,
+            Enabled = enabled,
+            EnabledDeadLetter = enabledDeadLetter 
         };
     }
 
     public void UpgradeVersion()
     {
         Version++;
+        UpdatedAt = DateTime.Now;
     }
 
     public void SoftDelete()

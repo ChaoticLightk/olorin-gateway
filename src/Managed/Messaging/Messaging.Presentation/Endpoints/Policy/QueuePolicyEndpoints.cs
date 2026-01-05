@@ -1,18 +1,20 @@
-using Extensions.Endpoints.Abstractions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 
 namespace Messaging.Presentation.Endpoints.Policy;
 
-public partial class QueuePolicyEndpoints : IEndpointMapper
+public static partial class QueuePolicyEndpoints
 {
-    public void Map(IEndpointRouteBuilder app)
+    public static RouteGroupBuilder MapQueuePolicyEndpoints(this RouteGroupBuilder group)
     {
-        app.MapPost("/messaging/policy", CreatePolicy);
-        app.MapGet("/messaging/policy", GetAllPolicies);
-        app.MapPatch("/messaging/policy", PatchPolicyById);
-        app.MapGet("/messaging/policy/{id}", GetPolicyById);
-        app.MapDelete("/messaging/policy/{id}", DeletePolicyById);
+        group.MapPost("/", CreatePolicy);
+        group.MapGet("/", GetAllPolicies);
+        group.MapPatch("/", PatchPolicy);
+        group.MapGet("/{id}", GetPolicyById);
+        group.MapDelete("/{id}", DeletePolicyById);
+        group.MapPost("/provision", ProvisionPolicy);
+
+        return group;
     }
 }
 
