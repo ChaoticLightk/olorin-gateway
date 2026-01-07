@@ -1,5 +1,7 @@
-using Messaging.Domain.Persistence.Abstractions;
+using Messaging.Domain.Data.Messaging.Persistence.Abstractions;
+using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 using Messaging.Domain.Shared.Messaging.Services;
+using Messaging.Infrastructure.Persistence.Messaging.Mongo;
 using Messaging.Infrastructure.Persistence.Policy.Mongo;
 using Messaging.Infrastructure.Shared.Messaging.Services;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +20,7 @@ public static class DependencyInjection
 
         builder.Services.AddSingleton<IQueueService, QueueService>();
         builder.Services.AddScoped<IQueuePolicyRepository, QueuePolicyRepository>();
+        builder.Services.AddScoped<IQueueMessageRepository, QueueMessageRepository>();
 
         return builder;
     }

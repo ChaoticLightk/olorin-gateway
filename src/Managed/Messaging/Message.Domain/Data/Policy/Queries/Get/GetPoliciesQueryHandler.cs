@@ -1,7 +1,7 @@
 using Colombo.ResultPattern;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
+using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 using Messaging.Domain.Data.Policy.Queries.DTO;
-using Messaging.Domain.Persistence.Abstractions;
 
 namespace Messaging.Domain.Data.Policy.Queries.Get;
 
@@ -12,7 +12,8 @@ public class GetPoliciesQueryHandler(IQueuePolicyRepository repository)
         GetPoliciesQuery request,
         CancellationToken cancellationToken = default)
     {
-        var result = await repository.Get(cancellationToken);
+        var result = await repository
+            .Get(request.Filter, cancellationToken);
 
         if (result.IsFailure)
         {

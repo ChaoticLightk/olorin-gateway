@@ -2,8 +2,8 @@
 using Colombo.ResultPattern;
 using Colombo.ResultPattern.ErrorResult;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
+using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 using Messaging.Domain.Data.Policy.Queries.DTO;
-using Messaging.Domain.Persistence.Abstractions;
 
 namespace Messaging.Domain.Data.Policy.Queries.GetById;
 
@@ -18,7 +18,7 @@ public class GetPolicyByIdQueryHandler(IQueuePolicyRepository repository)
 
         if (result.IsFailure)
         {
-            return result.Error!;
+            return result.Error;
         }
 
         var value = result.Value;

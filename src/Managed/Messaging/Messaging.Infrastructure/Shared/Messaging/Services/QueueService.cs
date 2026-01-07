@@ -98,7 +98,17 @@ public class QueueService(
         CancellationToken ct = default)
     {
         string message = JsonSerializer.Serialize(content, JsonOptions);
+        await PublishAsync(message, routingKey, exchange, metadata, mandatory, ct);
+    }
 
+    public async Task PublishAsync(
+        string message,
+        string routingKey,
+        string exchange = "",
+        MessagingMetadata? metadata = null,
+        bool mandatory = false,
+        CancellationToken ct = default)
+    {
         logger.LogPublishingRabbitMessage(message, routingKey, exchange);
 
         try

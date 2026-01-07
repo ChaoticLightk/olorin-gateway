@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Aspire.RabbitMQ.Client" Version="13.1.0" />
     <PackageReference Include="Aspire.MongoDB.Driver" Version="13.1.0" />
-	<PackageReference Include="Colombo.ResultPattern" Version="8.0.0" />
+	<PackageReference Include="Colombo.ResultPattern" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +19,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Aspire\Shared\Shared.csproj" />
     <ProjectReference Include="..\Message.Domain\Messaging.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Persistence\Abstractions\" />
+    <Folder Include="Persistence\Abstractions\Mongo\" />
+    <Folder Include="Persistence\Messaging\" />
+    <Folder Include="Persistence\Messaging\Mongo\" />
   </ItemGroup>
 
 </Project>

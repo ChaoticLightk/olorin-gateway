@@ -1,6 +1,6 @@
 using Colombo.ResultPattern;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
-using Messaging.Domain.Persistence.Abstractions;
+using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 using Messaging.Domain.Shared.Messaging.Services;
 
 namespace Messaging.Domain.Data.Policy.Commands.Create;

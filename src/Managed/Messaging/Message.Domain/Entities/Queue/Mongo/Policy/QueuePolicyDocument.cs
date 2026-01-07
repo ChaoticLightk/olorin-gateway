@@ -33,6 +33,7 @@ public class QueuePolicyDocument
     [BsonElement(nameof(DeletedAt))]
     public DateTime? DeletedAt { get; set; } = null;
 
+    #region Methods
     private QueuePolicyDocument(string name)
     {
        QueueName = name; 
@@ -93,4 +94,5 @@ public class QueuePolicyDocument
         EnabledDeadLetter = false;
         DeletedAt = DateTime.Now;
     }
+    #endregion
 }

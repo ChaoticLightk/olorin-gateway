@@ -12,6 +12,14 @@ public interface IQueueService
         MessagingMetadata? metadata = null,
         bool mandatory = false,
         CancellationToken ct = default);
+
+    Task PublishAsync(
+        string message,
+        string routingKey,
+        string exchange = "",
+        MessagingMetadata? metadata = null,
+        bool mandatory = false,
+        CancellationToken ct = default);
     
     Task ProvisionAsync(
         QueuePolicyDocument policy,

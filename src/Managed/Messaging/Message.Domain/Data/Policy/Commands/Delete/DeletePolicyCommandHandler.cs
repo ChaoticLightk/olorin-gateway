@@ -1,7 +1,7 @@
 using Colombo.ResultPattern;
 using Colombo.ResultPattern.ErrorResult;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
-using Messaging.Domain.Persistence.Abstractions;
+using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 
 namespace Messaging.Domain.Data.Policy.Commands.Delete;
 
@@ -16,7 +16,7 @@ public class DeletePolicyCommandHandler(IQueuePolicyRepository repository)
 
         if (result.IsFailure)
         {
-            return result.Error!;
+            return result.Error;
         }
 
         var value = result.Value;
@@ -32,7 +32,7 @@ public class DeletePolicyCommandHandler(IQueuePolicyRepository repository)
 
         if (updateResult.IsFailure)
         {
-            return updateResult.Error!;
+            return updateResult.Error;
         }
     
         return Result.Success();

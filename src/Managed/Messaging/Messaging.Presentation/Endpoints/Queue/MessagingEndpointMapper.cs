@@ -11,6 +11,6 @@ public class MessagingEndpointMapper : IEndpointMapper
     {
         app.MapGroup("/messaging/queue")
             .MapMessagingEndpoints()
-            .WithTags("Queue", "Messaging");
+            .WithTags("Queue");
     }
 }

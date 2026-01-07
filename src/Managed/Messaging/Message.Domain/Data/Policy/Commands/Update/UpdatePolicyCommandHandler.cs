@@ -1,7 +1,7 @@
 using Colombo.ResultPattern;
 using Colombo.ResultPattern.ErrorResult;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
-using Messaging.Domain.Persistence.Abstractions;
+using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 
 namespace Messaging.Domain.Data.Policy.Commands.Update;
 

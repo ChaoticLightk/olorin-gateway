@@ -4,6 +4,7 @@ using Messaging.Domain.Data.Policy.Commands.Create;
 using Messaging.Domain.Data.Policy.Commands.Delete;
 using Messaging.Domain.Data.Policy.Commands.Provision;
 using Messaging.Domain.Data.Policy.Commands.Update;
+using Messaging.Domain.Data.Policy.Enums;
 using Messaging.Domain.Data.Policy.Queries.DTO;
 using Messaging.Domain.Data.Policy.Queries.Get;
 using Messaging.Domain.Data.Policy.Queries.GetById;
@@ -33,9 +34,23 @@ public partial class QueuePolicyEndpoints
         return result.ToMinimalResult();
     }
 
-    static async Task<IResult> GetAllPolicies([FromQuery] int Page, [FromQuery] int PageSize, IMessageBus bus)
+    static async Task<IResult> GetAllPolicies(
+        [FromQuery] int page,
+        [FromQuery] int pageSize,
+        [FromQuery] FilterQueuePolicy filter,
+        IMessageBus bus)
     {
-        var request = new GetPoliciesQuery(Page, PageSize); 
+        var request = new GetPoliciesQuery(page, pageSize, filter); 
+
+        var result = await bus
+            .InvokeAsync<Result<List<PolicyResponse>>>(request);
+
+        return result.ToMinimalResult();
+    }
+
+    static async Task<IResult> GetAllDeletedPolicies([FromQuery] int Page, [FromQuery] int PageSize, IMessageBus bus)
+    {
+        var request = new GetPoliciesQuery(Page, PageSize, FilterQueuePolicy.Onlydeleted); 
 
         var result = await bus
             .InvokeAsync<Result<List<PolicyResponse>>>(request);
@@ -54,6 +69,16 @@ public partial class QueuePolicyEndpoints
     }
 
     static async Task<IResult> DeletePolicyById([FromRoute] string Id, IMessageBus bus)
+    {
+        var request = new DeletePolicyCommand(Id);
+
+        var result = await bus
+            .InvokeAsync<Result>(request);
+
+        return result.ToMinimalResult();
+    }
+
+    static async Task<IResult> RestorePolicyById([FromRoute] string Id, IMessageBus bus)
     {
         var request = new DeletePolicyCommand(Id);
 
