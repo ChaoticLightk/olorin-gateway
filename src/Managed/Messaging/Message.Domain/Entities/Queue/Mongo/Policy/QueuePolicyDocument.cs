@@ -1,3 +1,4 @@
+using Messaging.Domain.Shared.Messaging.DTO;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -11,6 +12,9 @@ public class QueuePolicyDocument
 
     [BsonElement(nameof(Enabled))]
     public bool Enabled { get; set; } = false;
+
+    [BsonElement(nameof(QueueType))]
+    public QueueType QueueType { get; private init; } = QueueType.Classic;
 
     [BsonElement(nameof(EnabledDeadLetter))]
     public bool EnabledDeadLetter { get; set; } = false;
@@ -69,6 +73,7 @@ public class QueuePolicyDocument
         string name,
         RetryPolicy? retry,
         QueueMetadata? metadata,
+        QueueType queueType = QueueType.Classic,
         bool enabled = false,
         bool enabledDeadLetter = false
     )
@@ -78,7 +83,8 @@ public class QueuePolicyDocument
             RetryPolicy = retry,
             Metadata = metadata,
             Enabled = enabled,
-            EnabledDeadLetter = enabledDeadLetter 
+            EnabledDeadLetter = enabledDeadLetter,
+            QueueType = queueType 
         };
     }
 

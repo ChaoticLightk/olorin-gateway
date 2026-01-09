@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Builder;
+using Shared.Constants;
 using Wolverine;
 using Wolverine.Attributes;
 using Wolverine.FluentValidation;
+using Wolverine.RabbitMQ;
 
 [assembly: WolverineModule]
 
@@ -14,6 +16,15 @@ public static class DependencyInjection
         builder.Host.UseWolverine(otps =>
         {
             otps.UseFluentValidation();
+
+            otps.UseRabbitMqUsingNamedConnection(RabbitMQConfiguration.CONNECTION_NAME)
+                .UseConventionalRouting(x =>
+                {
+                    x.ConfigureSending((x, c) =>
+                    {
+                    });
+                });
+
             // otps.Policies.AddMiddleware<ValidationMiddleware>();
         });
 

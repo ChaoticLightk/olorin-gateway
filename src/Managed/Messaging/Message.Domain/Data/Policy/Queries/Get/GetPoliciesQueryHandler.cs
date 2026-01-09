@@ -1,4 +1,4 @@
-using Colombo.ResultPattern;
+using Package.ResultPattern;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
 using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 using Messaging.Domain.Data.Policy.Queries.DTO;
@@ -17,14 +17,14 @@ public class GetPoliciesQueryHandler(IQueuePolicyRepository repository)
 
         if (result.IsFailure)
         {
-            return result.Error!; 
+            return result.Error; 
         }
 
         var value = result.Value;
 
         if (value is null or [])
         {
-            return Result<List<PolicyResponse>>.Success([]); 
+            return Result<List<PolicyResponse>>.Ok([]); 
         }
 
         return value.Select(PolicyResponse.FromDocument).ToList();

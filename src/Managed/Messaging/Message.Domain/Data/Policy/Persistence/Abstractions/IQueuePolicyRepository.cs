@@ -1,4 +1,4 @@
-using Colombo.ResultPattern;
+using Package.ResultPattern;
 using Messaging.Domain.Data.Policy.Enums;
 using Messaging.Domain.Entities.Queue.Mongo.Policy;
 

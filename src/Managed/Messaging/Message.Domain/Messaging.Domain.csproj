@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.1.0" />
-    <PackageReference Include="Colombo.ResultPattern" Version="8.0.1" />
     <PackageReference Include="WolverineFx" Version="5.9.2" />
+    <PackageReference Include="WolverineFx.RabbitMq" Version="5.9.2" />
     <PackageReference Include="WolverineFx.FluentValidation" Version="5.9.2" />
   </ItemGroup>
 
@@ -27,11 +27,12 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Exceptions\Messaging\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Shared\Messaging\DTO\" />
+    <Folder Include="Shared\Messaging\Mappers\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Aspire\Shared\Shared.csproj" />
+    <ProjectReference Include="..\..\..\npgks\Package.ResultPattern\Package.ResultPattern.csproj" />
   </ItemGroup>
 
 </Project>

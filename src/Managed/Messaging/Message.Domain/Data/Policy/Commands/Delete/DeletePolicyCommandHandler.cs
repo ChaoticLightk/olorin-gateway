@@ -1,5 +1,5 @@
-using Colombo.ResultPattern;
-using Colombo.ResultPattern.ErrorResult;
+using Package.ResultPattern;
+using Package.ResultPattern.ErrorResult;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
 using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 
@@ -35,6 +35,6 @@ public class DeletePolicyCommandHandler(IQueuePolicyRepository repository)
             return updateResult.Error;
         }
     
-        return Result.Success();
+        return Result.Ok();
     }
 }

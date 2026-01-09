@@ -15,10 +15,12 @@ public static class DependencyInjection
 {
     public static WebApplicationBuilder AddInfrastructure(this WebApplicationBuilder builder)
     {
-        builder.AddRabbitMQClient(RabbitMQConfiguration.CONNECTION_NAME);
         builder.AddMongoDBClient(MongoDbConfiguration.QUEUES_DB);
+        builder.AddRabbitMQClient(RabbitMQConfiguration.CONNECTION_NAME);
 
         builder.Services.AddSingleton<IQueueService, QueueService>();
+        builder.Services.AddScoped<IProvisionService, ProvisionService>();
+
         builder.Services.AddScoped<IQueuePolicyRepository, QueuePolicyRepository>();
         builder.Services.AddScoped<IQueueMessageRepository, QueueMessageRepository>();
 

@@ -26,7 +26,7 @@ var redis = builder
         keysChangedThreshold: 100);
 
 var userName = builder
-    .AddParameter("rabbitmq-username", secret: true);
+    .AddParameter("rabbitmq-username", secret: false);
 
 var password = builder
     .AddParameter("rabbitmq-password", secret: true);

@@ -1,9 +1,11 @@
 using Messaging.Domain.Entities.Queue.Mongo.Policy;
+using Messaging.Domain.Shared.Messaging.DTO;
 
 namespace Messaging.Domain.Data.Policy.Commands.DTO;
 
 public record PolicyQueueData(
     string Name, 
+    QueueType QueueType = QueueType.Classic,
     bool Enabled = false, 
     bool EnabledDeadLetter = false,
     PolicyRetryData? Retry = null,
@@ -35,6 +37,7 @@ public record PolicyQueueData(
                 Name,
                 retryPolicy,
                 queueMetadata,
+                QueueType,
                 Enabled,
                 EnabledDeadLetter);
 

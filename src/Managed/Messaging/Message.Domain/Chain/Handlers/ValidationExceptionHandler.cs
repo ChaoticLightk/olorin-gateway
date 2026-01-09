@@ -1,8 +1,8 @@
-using Colombo.ResultPattern;
-using Colombo.ResultPattern.ErrorResult;
 using FluentValidation;
+using Package.ResultPattern;
+using Package.ResultPattern.ErrorResult;
 
-namespace Messaging.Domain.Chain.Exceptions.Handlers;
+namespace Messaging.Domain.Chain.Handlers;
 
 public class ValidationExceptionHandler
 {

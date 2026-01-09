@@ -1,5 +1,5 @@
-using Colombo.ResultPattern;
-using Colombo.ResultPattern.AspNetCore.MinimalApi;
+using Package.ResultPattern;
+using Package.ResultPattern.AspNetCore.MinimalApi;
 using Messaging.Domain.Data.Policy.Commands.Create;
 using Messaging.Domain.Data.Policy.Commands.Delete;
 using Messaging.Domain.Data.Policy.Commands.Provision;

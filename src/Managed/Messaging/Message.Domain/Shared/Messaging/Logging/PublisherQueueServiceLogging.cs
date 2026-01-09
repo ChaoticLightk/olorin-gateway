@@ -1,4 +1,4 @@
-using Colombo.ResultPattern.ErrorResult;
+using Package.ResultPattern.ErrorResult;
 
 namespace Microsoft.Extensions.Logging;
 

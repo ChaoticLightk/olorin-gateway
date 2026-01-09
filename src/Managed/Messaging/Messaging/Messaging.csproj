@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Colombo.ResultPattern" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="10.1.0" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.14.0" />
@@ -18,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Aspire\ServiceDefaults\ServiceDefaults.csproj" />
+    <ProjectReference Include="..\..\..\npgks\Package.ResultPattern\Package.ResultPattern.csproj" />
     <ProjectReference Include="..\Message.Domain\Messaging.Domain.csproj" />
     <ProjectReference Include="..\Messaging.Infrastructure\Messaging.Infrastructure.csproj" />
     <ProjectReference Include="..\Messaging.Presentation\Messaging.Presentation.csproj" />

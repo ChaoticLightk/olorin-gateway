@@ -9,8 +9,8 @@ public class MessagingEndpointMapper : IEndpointMapper
 {
     public void Map(IEndpointRouteBuilder app)
     {
-        app.MapGroup("/messaging/queue")
+        app.MapGroup("/messaging/messages")
             .MapMessagingEndpoints()
-            .WithTags("Queue");
+            .WithTags("Messages");
     }
 }

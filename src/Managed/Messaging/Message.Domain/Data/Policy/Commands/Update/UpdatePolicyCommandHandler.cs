@@ -1,5 +1,5 @@
-using Colombo.ResultPattern;
-using Colombo.ResultPattern.ErrorResult;
+using Package.ResultPattern;
+using Package.ResultPattern.ErrorResult;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
 using Messaging.Domain.Data.Policy.Persistence.Abstractions;
 

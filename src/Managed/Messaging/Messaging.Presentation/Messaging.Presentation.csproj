@@ -17,12 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="Colombo.ResultPattern" Version="8.0.1" />
-	<PackageReference Include="Colombo.ResultPattern.AspNetCore" Version="8.0.1" />
     <PackageReference Include="WolverineFx" Version="5.9.2" />
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\..\..\npgks\Package.ResultPattern.AspNetCore\Package.ResultPattern.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\..\npgks\Package.ResultPattern\Package.ResultPattern.csproj" />
     <ProjectReference Include="..\..\..\Shared\Extensions\Extensions.csproj" />
     <ProjectReference Include="..\Message.Domain\Messaging.Domain.csproj" />
   </ItemGroup>

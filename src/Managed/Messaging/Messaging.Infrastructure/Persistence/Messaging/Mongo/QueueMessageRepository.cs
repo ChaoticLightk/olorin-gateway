@@ -1,4 +1,4 @@
-using Colombo.ResultPattern;
+using Package.ResultPattern;
 using Messaging.Domain.Data.Messaging.Persistence.Abstractions;
 using Messaging.Domain.Entities.Queue.Mongo;
 using Messaging.Infrastructure.Persistence.Abstractions.Mongo;

@@ -1,5 +1,5 @@
-using Colombo.ResultPattern;
-using Colombo.ResultPattern.ErrorResult;
+using Package.ResultPattern;
+using Package.ResultPattern.ErrorResult;
 using Messaging.Domain.Data.Abstractions.Wolwerine;
 using Messaging.Domain.Data.Messaging.Persistence.Abstractions;
 using Messaging.Domain.Data.Policy.Persistence.Abstractions;
@@ -65,7 +65,7 @@ public class SendMessageCommandHandler(
 
         try
         {
-            await queue.PublishAsync(queueMessage, request.QueueName, ct: cancellationToken);
+            await queue.PublishAsync(queueMessage, ct: cancellationToken);
         }
         catch (Exception ex)
         {
