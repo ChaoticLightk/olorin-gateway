@@ -17,13 +17,13 @@ public static class DependencyInjection
         {
             otps.UseFluentValidation();
 
-            otps.UseRabbitMqUsingNamedConnection(RabbitMQConfiguration.CONNECTION_NAME)
-                .UseConventionalRouting(x =>
-                {
-                    x.ConfigureSending((x, c) =>
-                    {
-                    });
-                });
+            // otps.UseRabbitMqUsingNamedConnection(RabbitMQConfiguration.CONNECTION_NAME)
+            //     .UseConventionalRouting(x =>
+            //     {
+            //         x.ConfigureSending((x, c) =>
+            //         {
+            //         });
+            //     });
 
             // otps.Policies.AddMiddleware<ValidationMiddleware>();
         });
