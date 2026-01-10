@@ -38,14 +38,14 @@ public class QueuePolicyRepository(IMongoClient mongodb)
             return collection
                 .Find(filterDef)
                 .ToListAsync(cancellationToken: cancellationToken);
-        }, "Não foi possivel buscar as politicas de filas");
+            }, "Não foi possivel buscar as politicas de filas");
     }
 
     public async Task<Result<QueuePolicyDocument>> Get(string policy, CancellationToken cancellationToken = default)
     {
         return await ExecuteAsync(() => collection
-            .Find(Builders<QueuePolicyDocument>
-                .Filter.Eq(u => u.QueueName, policy))
+            .Find(Builders<QueuePolicyDocument>.Filter
+                .Eq(u => u.QueueName, policy))
             .FirstOrDefaultAsync(cancellationToken)
         , "Não foi possivel buscar as politicas de filas");
     }

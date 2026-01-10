@@ -16,10 +16,33 @@ public partial class MessagingEndpoints
         return result.ToMinimalResult();
     }
 
-    static async Task<IResult> GetMessages(IMessageBus bus) => Results.Ok();
-    static async Task<IResult> GetMessageById([FromRoute] string id, IMessageBus bus) => Results.Ok();
-    static async Task<IResult> GetMessagesByQueue([FromRoute] string queue, IMessageBus bus) => Results.Ok();
-    static async Task<IResult> PatchMessage([FromRoute] string id, [FromBody] object request, IMessageBus bus) => Results.Ok();
-    static async Task<IResult> RetryMessages([FromQuery] string fodase, IMessageBus bus) => Results.Ok();
-    static async Task<IResult> DeleteMessages([FromBody] CreatePolicyCommand request, IMessageBus bus) => Results.Ok();
+    static async Task<IResult> GetMessages(IMessageBus bus)
+    {
+        return Results.Ok();
+    }
+
+    static async Task<IResult> GetMessageById([FromRoute] string id, IMessageBus bus)
+    {
+        return Results.Ok();
+    }
+
+    static async Task<IResult> GetMessagesByQueue([FromRoute] string queue, IMessageBus bus)
+    {
+        return Results.Ok();
+    }
+
+    static async Task<IResult> PatchMessage([FromRoute] string id, [FromBody] object request, IMessageBus bus)
+    {
+        return Results.Ok();
+    }
+
+    static async Task<IResult> RetryMessages([FromQuery] string fodase, IMessageBus bus)
+    {
+        return Results.Ok();
+    }
+
+    static async Task<IResult> DeleteMessages([FromBody] CreatePolicyCommand request, IMessageBus bus)
+    {
+        return Results.Ok();
+    }
 }

@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Gateway\Gateway\Gateway.csproj" />
+    <ProjectReference Include="..\..\Managed\Gateway\Gateway\Gateway.csproj" />
     <ProjectReference Include="..\..\Managed\Messaging\Messaging\Messaging.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" IsAspireProjectResource="false" />
   </ItemGroup>

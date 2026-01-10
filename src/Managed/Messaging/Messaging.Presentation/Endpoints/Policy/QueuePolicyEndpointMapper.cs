@@ -10,7 +10,7 @@ public class QueuePolicyEndpointMapper : IEndpointMapper
     public void Map(IEndpointRouteBuilder app)
     {
         var group = app
-            .MapGroup("/messaging/policy")
+            .MapGroup("/api/messaging/policy")
             .MapQueuePolicyEndpoints()
             .WithTags("Policy");
     }

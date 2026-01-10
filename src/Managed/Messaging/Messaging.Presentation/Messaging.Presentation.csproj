@@ -23,7 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\npgks\Package.ResultPattern.AspNetCore\Package.ResultPattern.AspNetCore.csproj" />
     <ProjectReference Include="..\..\..\npgks\Package.ResultPattern\Package.ResultPattern.csproj" />
-    <ProjectReference Include="..\..\..\Shared\Extensions\Extensions.csproj" />
+    <ProjectReference Include="..\..\Shared\Extensions\Extensions.csproj" />
     <ProjectReference Include="..\Message.Domain\Messaging.Domain.csproj" />
   </ItemGroup>
 </Project>

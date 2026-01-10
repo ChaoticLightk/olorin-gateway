@@ -8,4 +8,7 @@ public interface IQueueMessageRepository
     Task<Result<MessageDocument>> CreateMessage(MessageDocument document, CancellationToken cancellationToken = default);
 
     Task<Result> UpdateMessage(MessageDocument document, CancellationToken cancellationToken = default);
+
+    Task<Result<List<MessageDocument>>> Get(string queueName = "", CancellationToken cancellationToken = default);
+    Task<Result<MessageDocument>> GetById(string id, CancellationToken cancellationToken = default);
 }

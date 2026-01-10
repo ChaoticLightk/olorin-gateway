@@ -19,6 +19,8 @@
     <Folder Include="Data\Abstractions\Wolwerine\" />
     <Folder Include="Data\Messaging\Persistence\" />
     <Folder Include="Data\Messaging\Persistence\Abstractions\" />
+    <Folder Include="Data\Messaging\Queries\" />
+    <Folder Include="Data\Messaging\Queries\Get\" />
     <Folder Include="Data\Policy\Commands\Delete\" />
     <Folder Include="Data\Policy\Commands\Provision\" />
     <Folder Include="Data\Policy\Commands\Update\" />
