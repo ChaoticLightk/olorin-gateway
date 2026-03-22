@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.RabbitMQ.Client" Version="13.1.0" />
+    <PackageReference Include="Aspire.MongoDB.Driver" Version="13.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Aspire\Shared\Shared.csproj" />
+    <ProjectReference Include="..\..\..\npgks\Package.ResultPattern\Package.ResultPattern.csproj" />
+    <ProjectReference Include="..\Message.Domain\Messaging.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Persistence\Abstractions\" />
+    <Folder Include="Persistence\Abstractions\Mongo\" />
+    <Folder Include="Persistence\Messaging\" />
+    <Folder Include="Persistence\Messaging\Mongo\" />
+  </ItemGroup>
+
+</Project>

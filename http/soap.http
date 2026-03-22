@@ -1,6 +1,5 @@
-POST https://localhost:7111/integration-crediare
+POST http://localhost:64263/CrediareServicesIntr.asmx
 Content-Type: text/xml; charset=utf-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdG9jazM2MCIsImp0aSI6IjBhYTBhMmM1LTgxNTYtNGNiZi1hMDI0LTgwNWQzYzdkODIwZCIsImV4cCI6MTc2NDE2MTQxMSwiaXNzIjoib2xvcmluLWdhdGV3YXkifQ.oW8CjyaUSWpIRcEh4s7WNpOTwjalGeVSNapCWcUBLFI  
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
    <soapenv:Header/>
